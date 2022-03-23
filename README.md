@@ -2,8 +2,8 @@
 ### App Description  
 This is an App for the final project of the course *"Android Kotlin Developer"* by **Udacity**.
 
-The App will help the user to choose a cocktail, see it's recepie, learn how to make that cocktail and mark it as a favorite if the user like it. 
-It consists in having a list of cocktails for the user to choose and by clicking the cocktail the user will see a detail screen with an image, recepie and instructions on how to create that cocktail.
+The App will help the user to choose a cocktail, see it's recipe, learn how to make that cocktail and mark it as a favorite if the user like it. 
+It consists in having a list of cocktails for the user to choose and by clicking the cocktail the user will see a detail screen with an image, recipe and instructions on how to create that cocktail.
 The list will permit the user to mark their favorite cocktails and have them in a separate screen with the dedicated list for that purpose.
 
 The code is under MIT License so everyone is free to have a look. You can fork, copy and use the code as you please.
