@@ -1,3 +1,29 @@
 <resources>
     <string name="app_name">MyCoktails</string>
+    <!-- Login -->
+    <string name="welcome">Welcome</string>
+    <string name="sub_welcome">To Cocktails App</string>
+    <string name="logo_description">Image of a cocktail</string>
+    <string name="login_choose_text">Please choose login method!</string>
+    <string name="login">Login</string>
+    <string name="logged_in_user">You are logged in as %s</string>
+
+    <!-- Drawer Menu -->
+    <string name="open">Abrir</string>
+    <string name="close">Fechar</string>
+
+    <!-- List Cocktails -->
+    <string name="list_cocktails">List of Cocktails</string>
+    <string name="no_data">No data found</string>
+
+    <!-- Random Cocktail -->
+    <string name="random_cocktail">Random Cocktail</string>
+
+    <!-- Favourites Cocktail -->
+    <string name="favourites_cocktail">Favorites Cocktail</string>
+
+    <!-- Details Cocktail -->
+    <string name="details_cocktail">Details of Cocktail</string>
+
+
 </resources>
