@@ -14,4 +14,8 @@ data class CompactDrink(
     val strDrink: String,
     val strDrinkThumb: String,
     val existsInDB: Boolean = false
-)
+) {
+    fun getImgPreview(): String {
+        return "$strDrinkThumb/preview"
+    }
+}

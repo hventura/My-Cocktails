@@ -1,10 +1,12 @@
 package pt.hventura.mycoktails.utils
 
-import android.text.method.TextKeyListener.clear
 import android.view.View
+import android.widget.ImageView
 import androidx.databinding.BindingAdapter
 import androidx.lifecycle.LiveData
 import androidx.recyclerview.widget.RecyclerView
+import coil.load
+import pt.hventura.mycoktails.R
 import pt.hventura.mycoktails.base.BaseRecyclerViewAdapter
 
 object BindingAdapters {
@@ -21,6 +23,18 @@ object BindingAdapters {
                 clear()
                 addData(itemList)
             }
+        }
+    }
+
+    /**
+     * Set image from url using coil
+     */
+    @BindingAdapter("android:urlImage")
+    @JvmStatic
+    fun setImageFromUrl(view: ImageView, url: String) {
+        view.load(url) {
+            crossfade(true)
+            placeholder(R.drawable.ic_deafult_img)
         }
     }
 

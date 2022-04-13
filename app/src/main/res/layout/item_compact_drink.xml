@@ -25,8 +25,10 @@
 
             <ImageView
                 android:id="@+id/compactDrinkThumb"
-                android:layout_width="50dp"
-                android:layout_height="50dp"
+                android:layout_width="80dp"
+                android:layout_height="80dp"
+                android:scaleType="fitXY"
+                android:urlImage="@{item.imgPreview}"
                 app:layout_constraintBottom_toBottomOf="parent"
                 app:layout_constraintStart_toStartOf="parent"
                 app:layout_constraintTop_toTopOf="parent" />
@@ -38,7 +40,8 @@
                 android:layout_marginStart="@dimen/padding_normal"
                 android:text="@{item.strDrink}"
                 android:textColor="@android:color/black"
-                android:textSize="@dimen/text_normal"
+                android:textSize="@dimen/text_subtitle"
+                android:textStyle="bold"
                 app:layout_constraintBottom_toBottomOf="parent"
                 app:layout_constraintStart_toEndOf="@id/compactDrinkThumb"
                 app:layout_constraintTop_toTopOf="parent"
