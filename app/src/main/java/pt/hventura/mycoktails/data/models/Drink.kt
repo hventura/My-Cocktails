@@ -62,7 +62,8 @@ data class Drink(
     val strImageSource: String?,
     val strImageAttribution: String?,
     val strCreativeCommonsConfirmed: String?,
-    val dateModified: String?
+    val dateModified: String?,
+    var isFavourite: Boolean = false
 )
 
 fun Drink.toDetail(): DrinkForDetail {
@@ -105,5 +106,6 @@ fun Drink.toDetail(): DrinkForDetail {
         strImageAttribution,
         strCreativeCommonsConfirmed,
         dateModified,
+        isFavourite
     )
 }

@@ -7,4 +7,6 @@
     <color name="menuBackgroundColor">#EDEDED</color>
     <color name="onPrimary">#878787</color>
     <color name="errorColor">#DB4437</color>
+    <color name="cardColor">#34515151</color>
+    <color name="favouriteColor">#FFC107</color>
 </resources>

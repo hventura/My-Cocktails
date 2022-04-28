@@ -25,4 +25,5 @@ data class DrinkForDetail(
     val strImageAttribution: String?,
     val strCreativeCommonsConfirmed: String?,
     val dateModified: String?,
+    var isFavourite: Boolean = false
 )

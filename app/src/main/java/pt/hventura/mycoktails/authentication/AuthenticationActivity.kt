@@ -27,7 +27,7 @@ class AuthenticationActivity : AppCompatActivity() {
     val viewModel: AuthenticationViewModel by viewModel()
     var userInfo: UserInfo? = null
 
-    val startForResult = registerForActivityResult(ActivityResultContracts.StartActivityForResult()) { result ->
+    private val startForResult = registerForActivityResult(ActivityResultContracts.StartActivityForResult()) { result ->
         if (result.resultCode == Activity.RESULT_OK) {
             Toast.makeText(this, "Login ok", Toast.LENGTH_SHORT).show()
         } else {
@@ -44,9 +44,8 @@ class AuthenticationActivity : AppCompatActivity() {
         binding = DataBindingUtil.setContentView(this, R.layout.activity_authentication)
 
         userInfo = PreferencesManager.retrieve<UserInfo?>("userData")
-        userInfo = null
-        Timber.e(userInfo.toString())
         if (userInfo != null) {
+            Timber.e(userInfo.toString())
             startActivity(Intent(this, CocktailsActivity::class.java))
             overridePendingTransition(0, 0)
             finish()

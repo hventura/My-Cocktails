@@ -24,7 +24,6 @@ class CocktailListFragment : BaseFragment() {
         binding = DataBindingUtil.inflate(layoutInflater, R.layout.fragment_cocktail_list, container, false)
         binding.viewModel = viewModel
 
-        Timber.i("I'm onCreateView")
         return binding.root
     }
 
@@ -32,12 +31,10 @@ class CocktailListFragment : BaseFragment() {
         super.onViewCreated(view, savedInstanceState)
         binding.lifecycleOwner = this
         setupRecyclerView()
-        Timber.i("I'm onViewCreated and setting up recycler view")
     }
 
     override fun onResume() {
         super.onResume()
-        Timber.i("I'm resuming and getting data")
         viewModel.loadCocktails()
     }
 

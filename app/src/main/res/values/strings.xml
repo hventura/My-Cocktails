@@ -14,6 +14,8 @@
 
     <!-- List Cocktails -->
     <string name="list_cocktails">List of Cocktails</string>
+    <string name="preview_description">Image thumbnail of cocktail</string>
+    <string name="favourite_description">Favourite Icon. Click to add to favourites list</string>
     <string name="no_data">No data found</string>
 
     <!-- Random Cocktail -->

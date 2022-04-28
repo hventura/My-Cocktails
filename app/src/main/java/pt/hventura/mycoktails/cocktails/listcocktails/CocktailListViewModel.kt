@@ -14,34 +14,22 @@ import timber.log.Timber
 
 class CocktailListViewModel(app: Application, private val repository: CocktailsRepositoryImpl) : BaseViewModel(app) {
 
-    val userName: String = "John Doe"
-    val userEmail: String = "john_doe@askme.first"
+    val userName: String = "Helder Ventura"
+    val userEmail: String = "hfs.ventura@gmail.com"
 
     val cocktailsList = MutableLiveData<List<CompactDrink>>()
 
     fun loadCocktails() {
         showLoading.value = true
         viewModelScope.launch {
-            val listDB = repository.getCocktailsListDB()
-            when (listDB) {
+            when (val list = repository.getCocktailsList()) {
                 is Success<ListByCategory> -> {
                     val cocktailList = ArrayList<CompactDrink>()
-                    cocktailList.addAll(listDB.data.drinks)
+                    cocktailList.addAll(list.data.drinks)
                     cocktailsList.value = cocktailList
                 }
                 else -> {
-                    showSnackBar.value = (listDB as Error).message
-                    when (val listAPI = repository.getCocktailsList()) {
-                        is Success<ListByCategory> -> {
-                            val cocktailList = ArrayList<CompactDrink>()
-                            cocktailList.addAll(listAPI.data.drinks)
-                            cocktailsList.value = cocktailList
-                        }
-                        else -> {
-                            showSnackBar.value = (listAPI as Error).message
-                        }
-                    }
-
+                    showSnackBar.value = (list as Error).message
                 }
             }
             invalidateShowNoData()
@@ -55,5 +43,9 @@ class CocktailListViewModel(app: Application, private val repository: CocktailsR
      */
     private fun invalidateShowNoData() {
         showNoData.value = cocktailsList.value == null || cocktailsList.value!!.isEmpty()
+    }
+
+    init {
+
     }
 }
