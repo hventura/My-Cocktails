@@ -1,6 +1,7 @@
 <?xml version="1.0" encoding="utf-8"?>
 <resources>
     <!-- MARGINS -->
+    <dimen name="margin_small">8sp</dimen>
     <dimen name="margin_normal">16sp</dimen>
 
     <!-- PADDING -->

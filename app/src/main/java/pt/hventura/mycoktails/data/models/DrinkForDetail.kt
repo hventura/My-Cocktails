@@ -1,5 +1,9 @@
 package pt.hventura.mycoktails.data.models
 
+import android.os.Parcelable
+import kotlinx.parcelize.Parcelize
+
+@Parcelize
 data class DrinkForDetail(
     val idDrink: String,
     val strDrink: String,
@@ -26,4 +30,4 @@ data class DrinkForDetail(
     val strCreativeCommonsConfirmed: String?,
     val dateModified: String?,
     var isFavourite: Boolean = false
-)
+) : Parcelable

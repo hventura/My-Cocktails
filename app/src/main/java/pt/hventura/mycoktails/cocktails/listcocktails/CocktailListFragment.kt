@@ -8,6 +8,7 @@ import androidx.databinding.DataBindingUtil
 import org.koin.androidx.viewmodel.ext.android.viewModel
 import pt.hventura.mycoktails.R
 import pt.hventura.mycoktails.base.BaseFragment
+import pt.hventura.mycoktails.base.NavigationCommand
 import pt.hventura.mycoktails.databinding.FragmentCocktailListBinding
 import pt.hventura.mycoktails.utils.setup
 import timber.log.Timber
@@ -23,7 +24,6 @@ class CocktailListFragment : BaseFragment() {
     ): View {
         binding = DataBindingUtil.inflate(layoutInflater, R.layout.fragment_cocktail_list, container, false)
         binding.viewModel = viewModel
-
         return binding.root
     }
 
@@ -35,12 +35,12 @@ class CocktailListFragment : BaseFragment() {
 
     override fun onResume() {
         super.onResume()
-        viewModel.loadCocktails()
+        viewModel.loadCocktailList()
     }
 
     private fun setupRecyclerView() {
         val adapter = CocktailListAdapter {
-            Timber.e(it.toString())
+            viewModel.loadCocktailDetail(it.idDrink)
         }
         binding.compactCocktailsRecyclerView.setup(adapter)
     }

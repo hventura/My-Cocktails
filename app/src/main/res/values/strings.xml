@@ -12,6 +12,9 @@
     <string name="open">Abrir</string>
     <string name="close">Fechar</string>
 
+    <!-- Geral -->
+    <string name="titulo">Titulo</string>
+
     <!-- List Cocktails -->
     <string name="list_cocktails">List of Cocktails</string>
     <string name="preview_description">Image thumbnail of cocktail</string>
@@ -26,6 +29,9 @@
 
     <!-- Details Cocktail -->
     <string name="details_cocktail">Details of Cocktail</string>
+    <string name="instructionsTitle">Instructions</string>
+    <string name="glassType">Serve in %1$s</string>
+    <string name="alcoholicTitle">Alcoholic:</string>
 
 
 </resources>

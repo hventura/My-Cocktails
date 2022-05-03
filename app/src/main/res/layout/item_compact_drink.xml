@@ -1,7 +1,8 @@
 <?xml version="1.0" encoding="utf-8"?>
 <layout xmlns:android="http://schemas.android.com/apk/res/android"
     xmlns:app="http://schemas.android.com/apk/res-auto"
-    xmlns:tools="http://schemas.android.com/tools">
+    xmlns:tools="http://schemas.android.com/tools"
+    android:elevation="10dp">
 
     <data>
 
@@ -12,34 +13,31 @@
     </data>
 
     <androidx.cardview.widget.CardView
-        android:id="@+id/reminderCardView"
+        android:id="@+id/cocktailCardView"
         android:layout_width="match_parent"
         android:layout_height="wrap_content"
-        android:layout_margin="@dimen/margin_normal"
-        android:fadeVisible="@{true}"
-        android:shadowColor="@color/primaryColor"
-        android:shadowDx="10"
-        android:shadowDy="20"
-        android:shadowRadius="10"
-        app:cardBackgroundColor="@color/cardColor"
-        app:cardCornerRadius="10dp">
+        android:layout_margin="@dimen/margin_small"
+        android:layout_marginHorizontal="12dp"
+        android:layout_marginTop="10dp"
+        app:cardCornerRadius="15dp"
+        app:cardElevation="10dp">
 
         <androidx.constraintlayout.widget.ConstraintLayout
-            android:layout_width="match_parent"
-            android:layout_height="wrap_content"
+            android:layout_width="403dp"
+            android:layout_height="match_parent"
             android:padding="@dimen/padding_normal">
 
             <ImageView
                 android:id="@+id/compactDrinkThumb"
-                android:layout_width="80dp"
-                android:layout_height="80dp"
+                android:layout_width="70dp"
+                android:layout_height="70dp"
                 android:contentDescription="@string/preview_description"
                 android:scaleType="fitXY"
                 android:urlImage="@{item.imgPreview}"
                 app:layout_constraintBottom_toBottomOf="parent"
                 app:layout_constraintStart_toStartOf="parent"
                 app:layout_constraintTop_toTopOf="parent"
-                tools:src="@drawable/ic_deafult_img" />
+                tools:srcCompat="@tools:sample/avatars" />
 
             <TextView
                 android:id="@+id/title"
@@ -59,8 +57,8 @@
 
             <ImageView
                 android:id="@+id/favourite"
-                android:layout_width="40dp"
-                android:layout_height="40dp"
+                android:layout_width="30dp"
+                android:layout_height="30dp"
                 android:background="@drawable/ic_no_favorite"
                 android:contentDescription="@string/favourite_description"
                 app:layout_constraintBottom_toBottomOf="parent"

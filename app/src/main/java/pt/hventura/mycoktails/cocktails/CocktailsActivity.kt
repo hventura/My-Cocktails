@@ -1,6 +1,7 @@
 package pt.hventura.mycoktails.cocktails
 
 import android.os.Bundle
+import android.view.WindowManager
 import androidx.appcompat.app.ActionBarDrawerToggle
 import androidx.appcompat.app.AppCompatActivity
 import androidx.drawerlayout.widget.DrawerLayout
@@ -27,6 +28,9 @@ class CocktailsActivity : AppCompatActivity(), DrawerController {
     override fun onCreate(savedInstanceState: Bundle?) {
         super.onCreate(savedInstanceState)
         binding = ActivityCocktailsBinding.inflate(layoutInflater)
+
+        window.setFlags(WindowManager.LayoutParams.FLAG_FULLSCREEN, WindowManager.LayoutParams.FLAG_FULLSCREEN)
+
         setContentView(binding.root)
 
         if (!LoginControl.isLoggedIn()) {
@@ -56,6 +60,9 @@ class CocktailsActivity : AppCompatActivity(), DrawerController {
                 }
                 R.id.randomCocktailFragment -> {
                     binding.tvTitle.text = resources.getText(R.string.random_cocktail)
+                }
+                R.id.favouritesCocktailFragment -> {
+                    binding.tvTitle.text = resources.getText(R.string.favourites_cocktail)
                 }
                 R.id.detailsCocktailFragment -> {
                     binding.tvTitle.text = resources.getString(R.string.details_cocktail)

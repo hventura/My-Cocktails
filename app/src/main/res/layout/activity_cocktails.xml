@@ -20,6 +20,7 @@
                 android:id="@+id/toolbar"
                 android:layout_width="match_parent"
                 android:layout_height="?actionBarSize"
+                android:background="@color/primaryColor"
                 app:layout_constraintEnd_toEndOf="parent"
                 app:layout_constraintStart_toStartOf="parent"
                 app:layout_constraintTop_toTopOf="parent">
@@ -29,7 +30,8 @@
                     android:layout_width="wrap_content"
                     android:layout_height="wrap_content"
                     android:layout_gravity="center"
-                    android:text="Titulo"
+                    android:text="@string/titulo"
+                    android:textColor="@color/onPrimary"
                     android:textAllCaps="true"
                     android:textSize="20sp"
                     android:textStyle="bold" />

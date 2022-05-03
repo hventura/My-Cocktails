@@ -6,6 +6,10 @@ import com.squareup.moshi.Json
 import com.squareup.moshi.JsonClass
 import pt.hventura.mycoktails.utils.readProperties
 
+data class DrinkList(
+    val drinks: List<Drink>
+)
+
 @Entity(tableName = "detailed_drinks")
 @JsonClass(generateAdapter = true)
 data class Drink(
@@ -73,11 +77,15 @@ fun Drink.toDetail(): DrinkForDetail {
 
     for (i in 1..15) {
         readProperties<String>(this, "strIngredient$i")?.let {
-            ingredientsList.add(it)
-            count++
+            if (it.isNotEmpty()) {
+                ingredientsList.add(it)
+                count++
+            }
         }
         readProperties<String>(this, "strMeasure$i")?.let {
-            measuresList.add(it)
+            if (it.isNotEmpty()) {
+                measuresList.add(it)
+            }
         }
     }
 

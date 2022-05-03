@@ -48,4 +48,20 @@ class CocktailsRepositoryImpl(
 
     }
 
+    override suspend fun getCocktailDetail(drinkId: String): Result<Drink> = withContext(ioDispatcher) {
+        val response: Drink? = database.getDetailedDrink(drinkId)
+        if (response != null) {
+            return@withContext Success(response)
+        } else {
+            return@withContext try {
+                val remoteDetail = remote.getCocktailDetail(drinkId).drinks.first()
+                database.insertDrink(remoteDetail)
+                database.setExistsInDB(remoteDetail.idDrink)
+                Success(remoteDetail)
+            } catch (ex: Exception) {
+                Error(ex.localizedMessage)
+            }
+        }
+    }
+
 }

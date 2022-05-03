@@ -19,6 +19,9 @@ interface CocktailsDao {
     @Insert(onConflict = OnConflictStrategy.REPLACE)
     suspend fun insertDrinks(drinks: List<CompactDrink>)
 
+    @Insert(onConflict = OnConflictStrategy.REPLACE)
+    suspend fun insertDrink(drink: Drink)
+
     @Delete
     suspend fun deleteDrink(drink: Drink)
 
@@ -29,7 +32,7 @@ interface CocktailsDao {
     suspend fun getDrinks(): List<CompactDrink>
 
     @Query("SELECT * FROM detailed_drinks WHERE idDrink = :id")
-    suspend fun getDetailedDrink(id: String): List<Drink>
+    suspend fun getDetailedDrink(id: String): Drink?
 
     @Query("UPDATE drinks_list SET existsInDB = 'true' WHERE idDrink = :id")
     suspend fun setExistsInDB(id: String): Int

@@ -2,11 +2,14 @@ package pt.hventura.mycoktails.base
 
 import android.view.LayoutInflater
 import android.view.ViewGroup
+import android.view.animation.AnimationUtils
 import androidx.annotation.LayoutRes
+import androidx.cardview.widget.CardView
 import androidx.databinding.DataBindingUtil
 import androidx.databinding.ViewDataBinding
 import androidx.lifecycle.LifecycleOwner
 import androidx.recyclerview.widget.RecyclerView
+import pt.hventura.mycoktails.R
 
 abstract class BaseRecyclerViewAdapter<T>(private val callback: ((item: T) -> Unit)? = null) :
     RecyclerView.Adapter<DataBindingViewHolder<T>>() {
@@ -33,8 +36,10 @@ abstract class BaseRecyclerViewAdapter<T>(private val callback: ((item: T) -> Un
     }
 
     override fun onBindViewHolder(holder: DataBindingViewHolder<T>, position: Int) {
+        val mainBinding = holder.getRootBinding()
         val item = getItem(position)
         holder.bind(item)
+        mainBinding.findViewById<CardView>(R.id.cocktailCardView).startAnimation(AnimationUtils.loadAnimation(mainBinding.context, R.anim.rcv_row_anim))
         holder.itemView.setOnClickListener {
             callback?.invoke(item)
         }
