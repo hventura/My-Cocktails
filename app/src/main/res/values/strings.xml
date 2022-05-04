@@ -29,9 +29,11 @@
 
     <!-- Details Cocktail -->
     <string name="details_cocktail">Details of Cocktail</string>
+    <string name="ingredientsTitle">Ingredients</string>
     <string name="instructionsTitle">Instructions</string>
-    <string name="glassType">Serve in %1$s</string>
+    <string name="glassType">Serve in %s</string>
     <string name="alcoholicTitle">Alcoholic:</string>
+    <string name="topWith">Top with </string>
 
 
 </resources>

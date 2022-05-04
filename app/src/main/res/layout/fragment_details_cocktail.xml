@@ -56,63 +56,88 @@
 
         <ScrollView
             android:layout_width="match_parent"
-            android:layout_height="wrap_content"
+            android:layout_height="0dp"
             android:layout_marginTop="@dimen/margin_small"
+            app:layout_constraintBottom_toBottomOf="parent"
             app:layout_constraintEnd_toEndOf="parent"
             app:layout_constraintStart_toStartOf="parent"
             app:layout_constraintTop_toBottomOf="@id/lineSeparator">
 
             <androidx.constraintlayout.widget.ConstraintLayout
+                android:id="@+id/clDrinkDetails"
                 android:layout_width="match_parent"
                 android:layout_height="wrap_content">
 
                 <LinearLayout
                     android:id="@+id/llGlassAndAlcoholic"
                     android:layout_width="match_parent"
-                    android:layout_height="wrap_content"
+                    android:layout_height="40dp"
                     android:orientation="horizontal"
-                    android:weightSum="3"
                     app:layout_constraintEnd_toEndOf="parent"
                     app:layout_constraintStart_toStartOf="parent"
                     app:layout_constraintTop_toTopOf="parent">
 
                     <TextView
+                        android:id="@+id/drinkGlassType"
                         android:layout_width="0dp"
-                        android:layout_height="wrap_content"
-                        android:layout_weight="0.6"
+                        android:layout_height="match_parent"
+                        android:layout_weight="1.5"
+                        android:fontFamily="@font/ubuntu_bold"
+                        android:gravity="start"
+                        tools:text="Serve in Margarita/Coupette glass" />
+
+                    <TextView
+                        android:layout_width="wrap_content"
+                        android:layout_height="match_parent"
+                        android:layout_gravity="end"
+                        android:layout_marginEnd="@dimen/margin_small"
                         android:fontFamily="@font/ubuntu_bold"
                         android:text="@string/alcoholicTitle" />
 
                     <TextView
                         android:id="@+id/drinkAlcoholType"
-                        android:layout_width="0dp"
-                        android:layout_height="wrap_content"
-                        android:layout_weight="1"
+                        android:layout_width="wrap_content"
+                        android:layout_height="match_parent"
+                        android:layout_gravity="end"
+                        android:layout_weight="0.2"
                         android:fontFamily="@font/ubuntu"
                         android:text="@{drink.strAlcoholic}"
-                        tools:text="Optional" />
-
-                    <TextView
-                        android:id="@+id/drinkGlassType"
-                        android:layout_width="0dp"
-                        android:layout_height="wrap_content"
-                        android:layout_weight="1.4"
-                        android:fontFamily="@font/ubuntu_bold"
-                        android:gravity="end"
-                        tools:text="@string/glassType" />
+                        tools:text="Optional alcohol" />
 
                 </LinearLayout>
+
+                <TextView
+                    android:id="@+id/drinkIngredientsTitle"
+                    android:layout_width="match_parent"
+                    android:layout_height="wrap_content"
+                    android:layout_marginTop="@dimen/margin_small"
+                    android:fontFamily="@font/ubuntu_bold"
+                    android:text="@string/ingredientsTitle"
+                    app:layout_constraintEnd_toEndOf="parent"
+                    app:layout_constraintStart_toStartOf="parent"
+                    app:layout_constraintTop_toBottomOf="@id/llGlassAndAlcoholic" />
 
                 <LinearLayout
                     android:id="@+id/drinkListIngredients"
                     android:layout_width="match_parent"
                     android:layout_height="wrap_content"
-                    android:layout_marginTop="@dimen/margin_small"
                     android:gravity="center"
                     android:orientation="vertical"
                     app:layout_constraintEnd_toEndOf="parent"
                     app:layout_constraintStart_toStartOf="parent"
-                    app:layout_constraintTop_toBottomOf="@id/llGlassAndAlcoholic" />
+                    app:layout_constraintTop_toBottomOf="@id/drinkIngredientsTitle" />
+
+                <TextView
+                    android:id="@+id/drinkTopping"
+                    android:layout_width="match_parent"
+                    android:layout_height="wrap_content"
+                    android:layout_marginTop="@dimen/margin_large"
+                    android:visibility="gone"
+                    app:layout_constraintBottom_toTopOf="@id/drinkInstructionsTitle"
+                    app:layout_constraintEnd_toEndOf="parent"
+                    app:layout_constraintStart_toStartOf="parent"
+                    app:layout_constraintTop_toBottomOf="@id/drinkListIngredients"
+                    tools:text="Top with " />
 
                 <TextView
                     android:id="@+id/drinkInstructionsTitle"
@@ -123,7 +148,7 @@
                     android:text="@string/instructionsTitle"
                     app:layout_constraintEnd_toEndOf="parent"
                     app:layout_constraintStart_toStartOf="parent"
-                    app:layout_constraintTop_toBottomOf="@id/drinkListIngredients" />
+                    app:layout_constraintTop_toBottomOf="@id/drinkTopping" />
 
                 <TextView
                     android:layout_width="match_parent"

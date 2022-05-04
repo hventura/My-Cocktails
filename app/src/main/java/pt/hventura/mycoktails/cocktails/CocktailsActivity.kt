@@ -1,9 +1,11 @@
 package pt.hventura.mycoktails.cocktails
 
 import android.os.Bundle
+import android.view.MenuItem
 import android.view.WindowManager
 import androidx.appcompat.app.ActionBarDrawerToggle
 import androidx.appcompat.app.AppCompatActivity
+import androidx.core.view.GravityCompat
 import androidx.drawerlayout.widget.DrawerLayout
 import androidx.navigation.findNavController
 import androidx.navigation.ui.NavigationUI
@@ -40,13 +42,24 @@ class CocktailsActivity : AppCompatActivity(), DrawerController {
 
         toolbar = binding.toolbar
         setSupportActionBar(toolbar)
+        supportActionBar?.setDisplayShowHomeEnabled(true)
+        supportActionBar?.setDisplayHomeAsUpEnabled(false)
+        supportActionBar?.setHomeButtonEnabled(true)
         supportActionBar?.setDisplayShowTitleEnabled(false)
-        supportActionBar?.setDisplayHomeAsUpEnabled(true)
 
         drawerLayout = binding.drawerLayout
         navView = binding.navigationView
 
         toggle = ActionBarDrawerToggle(this, drawerLayout, toolbar, R.string.open, R.string.close)
+        toggle.setToolbarNavigationClickListener {
+            Timber.e(it.toString())
+            Timber.e(it.transitionName)
+            if (toggle.isDrawerIndicatorEnabled) {
+                drawerLayout.openDrawer(GravityCompat.START);
+            } else {
+                onBackPressed()
+            }
+        }
         drawerLayout.addDrawerListener(toggle)
         toggle.syncState()
 
@@ -57,18 +70,23 @@ class CocktailsActivity : AppCompatActivity(), DrawerController {
             when (destination.id) {
                 R.id.cocktailListFragment -> {
                     binding.tvTitle.text = resources.getString(R.string.list_cocktails)
+                    showBackButton(false)
                 }
                 R.id.randomCocktailFragment -> {
                     binding.tvTitle.text = resources.getText(R.string.random_cocktail)
+                    showBackButton(true)
                 }
                 R.id.favouritesCocktailFragment -> {
                     binding.tvTitle.text = resources.getText(R.string.favourites_cocktail)
+                    showBackButton(true)
                 }
                 R.id.detailsCocktailFragment -> {
                     binding.tvTitle.text = resources.getString(R.string.details_cocktail)
+                    showBackButton(true)
                 }
             }
         }
+
 
     }
 
@@ -79,6 +97,24 @@ class CocktailsActivity : AppCompatActivity(), DrawerController {
 
     override fun setDrawerUnLocked() {
         drawerLayout.setDrawerLockMode(DrawerLayout.LOCK_MODE_UNLOCKED)
+    }
+
+    override fun onOptionsItemSelected(item: MenuItem): Boolean {
+        return when (item.itemId) {
+            R.id.btnLogout -> {
+                LoginControl.logout()
+                startActivity<AuthenticationActivity>()
+                finish()
+                true
+            }
+            else -> super.onOptionsItemSelected(item)
+        }
+    }
+
+    private fun showBackButton(hasBack: Boolean) {
+        toggle.isDrawerIndicatorEnabled = !hasBack
+        supportActionBar?.setDisplayHomeAsUpEnabled(hasBack)
+        toggle.syncState()
     }
 
 }

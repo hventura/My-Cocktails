@@ -15,7 +15,7 @@ object LoginControl {
 
     fun logout() {
         FirebaseAuth.getInstance().signOut()
-        PreferencesManager.put(null, "userData")
+        PreferencesManager.put(null, "use rData")
     }
 
 }
