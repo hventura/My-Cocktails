@@ -2,7 +2,8 @@
 <LinearLayout xmlns:android="http://schemas.android.com/apk/res/android"
     android:layout_width="match_parent"
     android:layout_height="wrap_content"
-    android:background="@color/primaryColor"
+    xmlns:tools="http://schemas.android.com/tools"
+    android:background="@drawable/header_bg"
     android:orientation="vertical">
 
     <de.hdodenhof.circleimageview.CircleImageView
@@ -10,7 +11,8 @@
         android:layout_height="60dp"
         android:layout_marginStart="16dp"
         android:layout_marginTop="16dp"
-        android:src="@drawable/default_user" />
+        android:src="@drawable/default_user"
+        tools:src="@tools:sample/avatars"/>
 
     <TextView
         android:id="@+id/user_name"
@@ -20,7 +22,7 @@
         android:layout_marginStart="16dp"
         android:layout_marginEnd="16dp"
         android:text="Helder Ventura"
-        android:textColor="@color/onPrimary"
+        android:textColor="@android:color/white"
         android:textSize="20sp"
         android:textStyle="bold" />
 
@@ -31,7 +33,7 @@
         android:layout_marginStart="16dp"
         android:layout_marginEnd="16dp"
         android:text="hfs.ventura@gmail.com"
-        android:textColor="@color/onPrimary"
+        android:textColor="@android:color/white"
         android:textSize="16sp" />
 
     <View

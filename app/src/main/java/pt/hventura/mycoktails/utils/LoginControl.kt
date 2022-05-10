@@ -6,8 +6,8 @@ import pt.hventura.mycoktails.authentication.data.UserInfo
 object LoginControl {
 
     fun isLoggedIn(): Boolean {
-        val userData: UserInfo = PreferencesManager.retrieve<UserInfo>("userData") ?: UserInfo()
-        if (userData.userName != null) {
+        val userData = PreferencesManager.retrieve<UserInfo>("userData")
+        if (userData != null) {
             return true
         }
         return false
@@ -15,7 +15,7 @@ object LoginControl {
 
     fun logout() {
         FirebaseAuth.getInstance().signOut()
-        PreferencesManager.put(null, "use rData")
+        PreferencesManager.put(null, "userData")
     }
 
 }

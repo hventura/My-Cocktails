@@ -20,6 +20,7 @@
     <string name="preview_description">Image thumbnail of cocktail</string>
     <string name="favourite_description">Favourite Icon. Click to add to favourites list</string>
     <string name="no_data">No data found</string>
+    <string name="item_in_database">Item in database: </string>
 
     <!-- Random Cocktail -->
     <string name="random_cocktail">Random Cocktail</string>
@@ -34,6 +35,9 @@
     <string name="glassType">Serve in %s</string>
     <string name="alcoholicTitle">Alcoholic:</string>
     <string name="topWith">Top with </string>
+    <string name="cocktail_image_description">Image of cocktail loading</string>
+    <string name="random_cocktail_title">Get a random cocktail from your favorite list!</string>
+    <string name="random_cocktail_explanation">Shake your phone to see a new cokctail!</string>
 
 
 </resources>

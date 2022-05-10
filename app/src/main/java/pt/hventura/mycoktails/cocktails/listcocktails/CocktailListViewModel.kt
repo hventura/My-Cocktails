@@ -14,8 +14,8 @@ import pt.hventura.mycoktails.data.models.Result.Success
 
 class CocktailListViewModel(app: Application, private val repository: CocktailsRepositoryImpl) : BaseViewModel(app) {
 
-    val userName: String = "Helder Ventura"
-    val userEmail: String = "hfs.ventura@gmail.com"
+    var userName: String = "Helder Ventura"
+    var userEmail: String = "hfs.ventura@gmail.com"
 
     val cocktailsList = MutableLiveData<List<CompactDrink>>()
 

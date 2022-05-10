@@ -14,7 +14,7 @@
 
     <item
         android:id="@+id/favouritesCocktailFragment"
-        android:icon="@drawable/ic_favorite"
+        android:icon="@drawable/ic_heart"
         android:title="Favorites" />
 
     <item

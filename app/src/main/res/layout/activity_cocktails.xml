@@ -31,7 +31,7 @@
                     android:layout_height="wrap_content"
                     android:layout_gravity="center"
                     android:text="@string/titulo"
-                    android:textColor="@color/onPrimary"
+                    android:textColor="@android:color/white"
                     android:textAllCaps="true"
                     android:textSize="20sp"
                     android:textStyle="bold" />

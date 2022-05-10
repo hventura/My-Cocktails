@@ -43,13 +43,15 @@ class AuthenticationActivity : AppCompatActivity() {
 
         binding = DataBindingUtil.setContentView(this, R.layout.activity_authentication)
 
-        userInfo = PreferencesManager.retrieve<UserInfo?>("userData")
+        userInfo = PreferencesManager.retrieve("userData")
         if (userInfo != null) {
             Timber.e(userInfo.toString())
             startActivity(Intent(this, CocktailsActivity::class.java))
             overridePendingTransition(0, 0)
             finish()
         } else {
+            binding.login.visibility = View.VISIBLE
+            binding.loggedInUser.visibility = View.GONE
             initializeObservables()
         }
 

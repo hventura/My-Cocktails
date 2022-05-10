@@ -11,11 +11,15 @@ import androidx.navigation.findNavController
 import androidx.navigation.ui.NavigationUI
 import com.google.android.material.appbar.MaterialToolbar
 import com.google.android.material.navigation.NavigationView
+import org.koin.androidx.viewmodel.ext.android.viewModel
 import pt.hventura.mycoktails.R
 import pt.hventura.mycoktails.authentication.AuthenticationActivity
+import pt.hventura.mycoktails.authentication.data.UserInfo
 import pt.hventura.mycoktails.base.DrawerController
+import pt.hventura.mycoktails.cocktails.listcocktails.CocktailListViewModel
 import pt.hventura.mycoktails.databinding.ActivityCocktailsBinding
 import pt.hventura.mycoktails.utils.LoginControl
+import pt.hventura.mycoktails.utils.PreferencesManager
 import pt.hventura.mycoktails.utils.startActivity
 import timber.log.Timber
 
@@ -26,20 +30,24 @@ class CocktailsActivity : AppCompatActivity(), DrawerController {
     private lateinit var drawerLayout: DrawerLayout
     private lateinit var navView: NavigationView
     private lateinit var toggle: ActionBarDrawerToggle
+    val viewModel: CocktailListViewModel by viewModel()
 
     override fun onCreate(savedInstanceState: Bundle?) {
         super.onCreate(savedInstanceState)
         binding = ActivityCocktailsBinding.inflate(layoutInflater)
-
         window.setFlags(WindowManager.LayoutParams.FLAG_FULLSCREEN, WindowManager.LayoutParams.FLAG_FULLSCREEN)
-
         setContentView(binding.root)
 
         if (!LoginControl.isLoggedIn()) {
             startActivity<AuthenticationActivity>()
             finish()
+        } else {
+            val userInfo = PreferencesManager.retrieve<UserInfo>("userData") ?: UserInfo("John Doe", "ask@me.first")
+            viewModel.userName = userInfo.userName
+            viewModel.userEmail = userInfo.userEmail
         }
 
+        // TOOLBAR
         toolbar = binding.toolbar
         setSupportActionBar(toolbar)
         supportActionBar?.setDisplayShowHomeEnabled(true)
@@ -47,13 +55,10 @@ class CocktailsActivity : AppCompatActivity(), DrawerController {
         supportActionBar?.setHomeButtonEnabled(true)
         supportActionBar?.setDisplayShowTitleEnabled(false)
 
+        // DRAWER
         drawerLayout = binding.drawerLayout
-        navView = binding.navigationView
-
         toggle = ActionBarDrawerToggle(this, drawerLayout, toolbar, R.string.open, R.string.close)
         toggle.setToolbarNavigationClickListener {
-            Timber.e(it.toString())
-            Timber.e(it.transitionName)
             if (toggle.isDrawerIndicatorEnabled) {
                 drawerLayout.openDrawer(GravityCompat.START);
             } else {
@@ -63,6 +68,14 @@ class CocktailsActivity : AppCompatActivity(), DrawerController {
         drawerLayout.addDrawerListener(toggle)
         toggle.syncState()
 
+        // NAVIGATION
+        navView = binding.navigationView
+        navView.menu.findItem(R.id.btnLogout).setOnMenuItemClickListener {
+            LoginControl.logout()
+            startActivity<AuthenticationActivity>()
+            finish()
+            false
+        }
         val navController = findNavController(R.id.nav_host_fragment)
         NavigationUI.setupWithNavController(navView, navController)
         navController.addOnDestinationChangedListener { _, destination, _ ->

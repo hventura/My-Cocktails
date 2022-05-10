@@ -6,6 +6,8 @@ import androidx.databinding.BindingAdapter
 import androidx.lifecycle.LiveData
 import androidx.recyclerview.widget.RecyclerView
 import coil.load
+import coil.request.CachePolicy
+import coil.transform.RoundedCornersTransformation
 import pt.hventura.mycoktails.R
 import pt.hventura.mycoktails.base.BaseRecyclerViewAdapter
 
@@ -33,8 +35,46 @@ object BindingAdapters {
     @JvmStatic
     fun setImageFromUrl(view: ImageView, url: String) {
         view.load(url) {
+            memoryCachePolicy(CachePolicy.ENABLED)
+            placeholder(R.drawable.ic_image_error)
+            error(R.drawable.ic_image_error)
             crossfade(true)
-            placeholder(R.drawable.ic_deafult_img)
+            crossfade(500)
+            transformations(RoundedCornersTransformation(25f))
+        }
+    }
+
+    /**
+     * Set image accordingly favourite flag using coil
+     */
+    @BindingAdapter("android:favourite")
+    @JvmStatic
+    fun setImageFavourite(view: ImageView, isFavourite: Boolean) {
+        val drawable = if (isFavourite) {
+            R.drawable.ic_favourite
+        } else {
+            R.drawable.ic_no_favourite
+        }
+        view.load(drawable) {
+            crossfade(true)
+            crossfade(500)
+        }
+    }
+
+    /**
+     * Set icon accordingly exists in Database flag using coil
+     */
+    @BindingAdapter("android:applyIcon")
+    @JvmStatic
+    fun setIconExistsInDb(view: ImageView, exists: Boolean) {
+        val drawable = if (exists) {
+            R.drawable.ic_ok
+        } else {
+            R.drawable.ic_no
+        }
+        view.load(drawable) {
+            crossfade(true)
+            crossfade(500)
         }
     }
 

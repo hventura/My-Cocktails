@@ -4,7 +4,6 @@ import android.app.Application
 import androidx.lifecycle.map
 import pt.hventura.mycoktails.authentication.data.UserInfo
 import pt.hventura.mycoktails.base.BaseViewModel
-import pt.hventura.mycoktails.data.CocktailsRepositoryImpl
 import pt.hventura.mycoktails.utils.PreferencesManager
 
 class AuthenticationViewModel(app: Application) : BaseViewModel(app) {
@@ -19,7 +18,7 @@ class AuthenticationViewModel(app: Application) : BaseViewModel(app) {
                 user.displayName!!,
                 user.email!!
             )
-            PreferencesManager.put<UserInfo>(userData, "userData")
+            PreferencesManager.put(userData, "userData")
             AuthenticationState.AUTHENTICATED
         } else {
             PreferencesManager.put(null, "userData")

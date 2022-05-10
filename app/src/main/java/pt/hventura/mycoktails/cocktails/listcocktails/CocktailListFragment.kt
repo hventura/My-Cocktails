@@ -5,6 +5,7 @@ import android.view.LayoutInflater
 import android.view.View
 import android.view.ViewGroup
 import androidx.databinding.DataBindingUtil
+import org.koin.androidx.viewmodel.ext.android.sharedViewModel
 import org.koin.androidx.viewmodel.ext.android.viewModel
 import pt.hventura.mycoktails.R
 import pt.hventura.mycoktails.base.BaseFragment
@@ -16,12 +17,9 @@ import timber.log.Timber
 class CocktailListFragment : BaseFragment() {
 
     private lateinit var binding: FragmentCocktailListBinding
-    override val viewModel: CocktailListViewModel by viewModel()
+    override val viewModel: CocktailListViewModel by sharedViewModel()
 
-    override fun onCreateView(
-        inflater: LayoutInflater, container: ViewGroup?,
-        savedInstanceState: Bundle?
-    ): View {
+    override fun onCreateView(inflater: LayoutInflater, container: ViewGroup?, savedInstanceState: Bundle?): View {
         binding = DataBindingUtil.inflate(layoutInflater, R.layout.fragment_cocktail_list, container, false)
         binding.viewModel = viewModel
         return binding.root

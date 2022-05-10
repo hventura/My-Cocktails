@@ -33,9 +33,6 @@ class DetailsCocktailFragment : BaseFragment() {
         val measureList = args.drinkDetail.measureList
         val numberIngredients = args.drinkDetail.numberIngredients
 
-        Timber.e(ingredientsList.toString())
-        Timber.e(measureList.toString())
-
         ingredientsList?.forEachIndexed { index, ingredient ->
             val view = layoutInflater.inflate(R.layout.item_ingredient, null)
             view.findViewById<TextView>(R.id.ingredientName).text = ingredient
