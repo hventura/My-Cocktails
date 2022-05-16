@@ -23,7 +23,7 @@
             android:fontFamily="@font/ubuntu_bold"
             android:padding="10dp"
             android:textAlignment="center"
-            android:textColor="@color/primaryColor"
+            android:textColor="@color/primary_color"
             android:textSize="20sp"
             android:textStyle="bold"
             app:layout_constraintEnd_toEndOf="parent"
@@ -61,7 +61,7 @@
                 android:layout_width="5dp"
                 android:layout_height="match_parent"
                 android:layout_marginEnd="@dimen/margin_large"
-                android:background="@color/primaryColor" />
+                android:background="@color/primary_color" />
 
 
             <ScrollView

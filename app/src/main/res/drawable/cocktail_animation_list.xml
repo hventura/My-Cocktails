@@ -3,28 +3,28 @@
 
     <item
         android:drawable="@drawable/ic_cocktail_00"
-        android:duration="400" />
+        android:duration="200" />
     <item
         android:drawable="@drawable/ic_cocktail_01"
-        android:duration="400" />
+        android:duration="200" />
     <item
         android:drawable="@drawable/ic_cocktail_02"
-        android:duration="400" />
+        android:duration="200" />
     <item
         android:drawable="@drawable/ic_cocktail_03"
-        android:duration="400" />
+        android:duration="200" />
     <item
         android:drawable="@drawable/ic_cocktail_04"
-        android:duration="400" />
+        android:duration="200" />
     <item
         android:drawable="@drawable/ic_cocktail_05"
-        android:duration="300" />
+        android:duration="200" />
     <item
         android:drawable="@drawable/ic_cocktail_06"
-        android:duration="300" />
+        android:duration="200" />
     <item
         android:drawable="@drawable/ic_cocktail_07"
-        android:duration="300" />
+        android:duration="200" />
     <item
         android:drawable="@drawable/ic_cocktail_08"
         android:duration="200" />
@@ -36,6 +36,6 @@
         android:duration="200" />
     <item
         android:drawable="@drawable/ic_cocktail"
-        android:duration="100" />
+        android:duration="200" />
 
 </animation-list>

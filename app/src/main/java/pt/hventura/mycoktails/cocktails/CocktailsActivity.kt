@@ -60,7 +60,7 @@ class CocktailsActivity : AppCompatActivity(), DrawerController {
         toggle = ActionBarDrawerToggle(this, drawerLayout, toolbar, R.string.open, R.string.close)
         toggle.setToolbarNavigationClickListener {
             if (toggle.isDrawerIndicatorEnabled) {
-                drawerLayout.openDrawer(GravityCompat.START);
+                drawerLayout.openDrawer(GravityCompat.START)
             } else {
                 onBackPressed()
             }
@@ -79,7 +79,6 @@ class CocktailsActivity : AppCompatActivity(), DrawerController {
         val navController = findNavController(R.id.nav_host_fragment)
         NavigationUI.setupWithNavController(navView, navController)
         navController.addOnDestinationChangedListener { _, destination, _ ->
-            Timber.e(destination.displayName)
             when (destination.id) {
                 R.id.cocktailListFragment -> {
                     binding.tvTitle.text = resources.getString(R.string.list_cocktails)

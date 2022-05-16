@@ -1,57 +1,94 @@
 package pt.hventura.mycoktails.cocktails.listcocktails
 
 import android.app.Application
-import androidx.lifecycle.LiveData
 import androidx.lifecycle.MutableLiveData
 import androidx.lifecycle.viewModelScope
 import kotlinx.coroutines.launch
 import pt.hventura.mycoktails.base.BaseViewModel
 import pt.hventura.mycoktails.base.NavigationCommand
+import pt.hventura.mycoktails.cocktails.favoritecocktails.FavouritesCocktailFragmentDirections
 import pt.hventura.mycoktails.data.CocktailsRepositoryImpl
-import pt.hventura.mycoktails.data.models.*
+import pt.hventura.mycoktails.data.models.CompactDrink
+import pt.hventura.mycoktails.data.models.Drink
+import pt.hventura.mycoktails.data.models.ListByCategory
 import pt.hventura.mycoktails.data.models.Result.Error
 import pt.hventura.mycoktails.data.models.Result.Success
+import pt.hventura.mycoktails.data.models.toDetail
 
 class CocktailListViewModel(app: Application, private val repository: CocktailsRepositoryImpl) : BaseViewModel(app) {
 
     var userName: String = "Helder Ventura"
     var userEmail: String = "hfs.ventura@gmail.com"
 
-    val cocktailsList = MutableLiveData<List<CompactDrink>>()
+    val cocktailsList = MutableLiveData<MutableList<CompactDrink>>()
+    val favouriteCocktailsList = MutableLiveData<MutableList<CompactDrink>>()
+    val showNoFavouritesData = MutableLiveData<Boolean>()
 
     fun loadCocktailList() {
-        showLoading.value = true
         viewModelScope.launch {
             when (val list = repository.getCocktailsList()) {
                 is Success<ListByCategory> -> {
-                    val cocktailList = ArrayList<CompactDrink>()
-                    cocktailList.addAll(list.data.drinks)
-                    cocktailsList.value = cocktailList
+                    cocktailsList.value = list.data.drinks
                 }
                 else -> {
                     showSnackBar.value = (list as Error).message
                 }
             }
             invalidateShowNoData()
-            showLoading.value = false
-
         }
     }
 
-    fun loadCocktailDetail(drinkId: String) {
-        showLoading.value = true
+    fun loadCocktailDetail(drinkId: String, fromFav: Boolean) {
         viewModelScope.launch {
             when (val detail = repository.getCocktailDetail(drinkId)) {
                 is Success<Drink> -> {
-                    navigationCommand.value = NavigationCommand.To(
-                        CocktailListFragmentDirections.actionCocktailListFragmentToDetailsCocktailFragment(detail.data.toDetail())
-                    )
+                    showLoading.postValue(false)
+                    if (fromFav) {
+                        navigationCommand.value = NavigationCommand.To(
+                            FavouritesCocktailFragmentDirections.actionFavouritesCocktailFragmentToDetailsCocktailFragment(detail.data.toDetail())
+                        )
+                    } else {
+                        navigationCommand.value = NavigationCommand.To(
+                            CocktailListFragmentDirections.actionCocktailListFragmentToDetailsCocktailFragment(detail.data.toDetail())
+                        )
+                    }
                 }
                 else -> {
                     showSnackBar.value = (detail as Error).message
                 }
             }
-            showLoading.value = false
+        }
+    }
+
+    fun setDrinkAsFavourite(drinkId: String) {
+        viewModelScope.launch {
+            when (val update = repository.getUpdateFavouriteDrink(drinkId)) {
+                is Success<Boolean> -> {
+                    for (drink in cocktailsList.value!!) {
+                        if (drink.idDrink == drinkId) {
+                            drink.favourite = update.data
+                        }
+                    }
+                }
+                else -> {
+                    showErrorMessage.value = (update as Error).message
+                }
+            }
+        }
+    }
+
+    fun loadFavouriteDrinks() {
+        viewModelScope.launch {
+            when (val favourites = repository.getFavouriteCocktailsList()) {
+                is Success<List<CompactDrink>> -> {
+                    favouriteCocktailsList.value = favourites.data.toMutableList()
+                    showNoFavouritesData.value = false
+                }
+                else -> {
+                    favouriteCocktailsList.value = mutableListOf()
+                    showNoFavouritesData.value = true
+                }
+            }
         }
     }
 

@@ -70,6 +70,11 @@ data class Drink(
     var isFavourite: Boolean = false
 )
 
+/**
+ * I could use the Drink class. This was just for practicing purpose.
+ * Started as an exercise for me but end up to use it as is.
+ * It was just faster to manipulate the information with an array rather than by property.
+ **/
 fun Drink.toDetail(): DrinkForDetail {
     val ingredientsList = arrayListOf<String>()
     val measuresList = arrayListOf<String>()

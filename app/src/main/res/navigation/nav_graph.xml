@@ -22,7 +22,11 @@
     <fragment
         android:id="@+id/favouritesCocktailFragment"
         android:name="pt.hventura.mycoktails.cocktails.favoritecocktails.FavouritesCocktailFragment"
-        android:label="FavouritesCocktailFragment" />
+        android:label="FavouritesCocktailFragment" >
+        <action
+            android:id="@+id/action_favouritesCocktailFragment_to_detailsCocktailFragment"
+            app:destination="@id/detailsCocktailFragment" />
+    </fragment>
     <fragment
         android:id="@+id/detailsCocktailFragment"
         android:name="pt.hventura.mycoktails.cocktails.detailscocktail.DetailsCocktailFragment"
@@ -34,5 +38,8 @@
         <action
             android:id="@+id/action_detailsCocktailFragment_to_cocktailListFragment"
             app:destination="@id/cocktailListFragment" />
+        <action
+            android:id="@+id/action_detailsCocktailFragment_to_favouritesCocktailFragment"
+            app:destination="@id/favouritesCocktailFragment" />
     </fragment>
 </navigation>

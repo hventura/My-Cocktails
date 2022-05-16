@@ -84,9 +84,6 @@ class RandomCocktailFragment : BaseFragment(), SensorEventListener {
         accelerationCurrentValue = sqrt((x * x + y * y + z * z))
         changeInAcceleration = abs(accelerationCurrentValue - accelerationPreviousValue)
         accelerationPreviousValue = accelerationCurrentValue
-        binding.accelerationCurrentValue.text = "Current = ${accelerationCurrentValue.toInt()}"
-        binding.accelerationPreviousValue.text = "Previous = ${accelerationPreviousValue.toInt()}"
-        binding.accelerationDifferenceValue.text = "Difference = ${changeInAcceleration.toInt()}"
         viewModel.updateMaxShake(changeInAcceleration)
     }
 

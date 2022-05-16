@@ -1,8 +1,10 @@
 package pt.hventura.mycoktails.base
 
 import android.view.LayoutInflater
+import android.view.View
 import android.view.ViewGroup
 import android.view.animation.AnimationUtils
+import android.widget.ImageView
 import androidx.annotation.LayoutRes
 import androidx.cardview.widget.CardView
 import androidx.databinding.DataBindingUtil
@@ -10,8 +12,9 @@ import androidx.databinding.ViewDataBinding
 import androidx.lifecycle.LifecycleOwner
 import androidx.recyclerview.widget.RecyclerView
 import pt.hventura.mycoktails.R
+import timber.log.Timber
 
-abstract class BaseRecyclerViewAdapter<T>(private val callback: ((item: T) -> Unit)? = null) :
+abstract class BaseRecyclerViewAdapter<T>(private val callback: ((it: View, item: T, position: Int) -> Unit)? = null) :
     RecyclerView.Adapter<DataBindingViewHolder<T>>() {
 
     private var _items: MutableList<T> = mutableListOf()
@@ -40,8 +43,12 @@ abstract class BaseRecyclerViewAdapter<T>(private val callback: ((item: T) -> Un
         val item = getItem(position)
         holder.bind(item)
         mainBinding.findViewById<CardView>(R.id.cocktailCardView).startAnimation(AnimationUtils.loadAnimation(mainBinding.context, R.anim.rcv_row_anim))
+        val favouriteStar = mainBinding.findViewById<ImageView>(R.id.favourite)
         holder.itemView.setOnClickListener {
-            callback?.invoke(item)
+            callback?.invoke(it, item, position)
+        }
+        favouriteStar.setOnClickListener {
+            callback?.invoke(it, item, position)
         }
     }
 

@@ -9,6 +9,7 @@ data class CategoryList(
 
 @Entity(tableName = "categories")
 data class Categories(
-    val strCategory: String,
-    @PrimaryKey(autoGenerate = true) val id: Int = 0
+    @PrimaryKey(autoGenerate = true)
+    val id: Int = 0,
+    val strCategory: String
 )

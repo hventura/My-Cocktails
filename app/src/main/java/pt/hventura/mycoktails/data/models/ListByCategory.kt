@@ -4,7 +4,7 @@ import androidx.room.Entity
 import androidx.room.PrimaryKey
 
 data class ListByCategory(
-    val drinks: List<CompactDrink>
+    val drinks: MutableList<CompactDrink>
 )
 
 @Entity(tableName = "drinks_list")
