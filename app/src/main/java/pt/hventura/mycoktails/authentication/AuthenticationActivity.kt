@@ -27,7 +27,7 @@ class AuthenticationActivity : AppCompatActivity() {
     val viewModel: AuthenticationViewModel by viewModel()
     var userInfo: UserInfo? = null
 
-    private val startForResult = registerForActivityResult(ActivityResultContracts.StartActivityForResult()) { result ->
+    private val activityLauncher = registerForActivityResult(ActivityResultContracts.StartActivityForResult()) { result ->
         if (result.resultCode == Activity.RESULT_OK) {
             Toast.makeText(this, "Login ok", Toast.LENGTH_SHORT).show()
         } else {
@@ -102,7 +102,7 @@ class AuthenticationActivity : AppCompatActivity() {
             .setTheme(R.style.Theme_MyCocktails)
             .build()
 
-        startForResult.launch(authUiIntent)
+        activityLauncher.launch(authUiIntent)
 
     }
 }

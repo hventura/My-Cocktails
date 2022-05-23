@@ -18,7 +18,11 @@
         android:id="@+id/randomCocktailFragment"
         android:name="pt.hventura.mycoktails.cocktails.randomcocktail.RandomCocktailFragment"
         android:label="RandomCocktailFragment"
-        tools:layout="@layout/fragment_random_cocktail" />
+        tools:layout="@layout/fragment_random_cocktail" >
+        <action
+            android:id="@+id/action_randomCocktailFragment_to_detailsCocktailFragment"
+            app:destination="@id/detailsCocktailFragment" />
+    </fragment>
     <fragment
         android:id="@+id/favouritesCocktailFragment"
         android:name="pt.hventura.mycoktails.cocktails.favoritecocktails.FavouritesCocktailFragment"
@@ -34,7 +38,8 @@
         tools:layout="@layout/fragment_details_cocktail" >
         <argument
             android:name="drinkDetail"
-            app:argType="pt.hventura.mycoktails.data.models.DrinkForDetail" />
+            app:argType="pt.hventura.mycoktails.data.models.DrinkForDetail"
+            app:nullable="true" />
         <action
             android:id="@+id/action_detailsCocktailFragment_to_cocktailListFragment"
             app:destination="@id/cocktailListFragment" />

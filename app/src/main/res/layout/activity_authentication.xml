@@ -6,7 +6,7 @@
     <androidx.constraintlayout.widget.ConstraintLayout
         android:layout_width="match_parent"
         android:layout_height="match_parent"
-        android:background="@color/mainBackgroundColor"
+        android:background="@color/primary_dark_color"
         android:padding="@dimen/padding_normal"
         tools:context=".authentication.AuthenticationActivity">
 
@@ -25,31 +25,26 @@
 
             <TextView
                 android:id="@+id/welcome"
+                style="@style/DefaultText.WelcomeTitle"
                 android:layout_width="wrap_content"
                 android:layout_height="wrap_content"
-                android:fontFamily="@font/gooddog"
-                android:text="@string/welcome"
-                android:textSize="@dimen/text_title_welcome" />
+                android:text="@string/welcome" />
 
             <TextView
                 android:id="@+id/sub_welcome"
+                style="@style/DefaultText.SubWelcomeTitle"
                 android:layout_width="wrap_content"
                 android:layout_height="wrap_content"
-                android:fontFamily="@font/gooddog"
-                android:text="@string/sub_welcome"
-                android:textSize="@dimen/text_title_sub_welcome" />
+                android:text="@string/sub_welcome"/>
 
         </LinearLayout>
 
-        <androidx.appcompat.widget.AppCompatButton
+        <com.google.android.material.button.MaterialButton
             android:id="@+id/login"
             android:layout_width="150dp"
             android:layout_height="wrap_content"
             android:layout_marginTop="20dp"
-            android:background="@drawable/default_button"
-            android:fontFamily="@font/sniglet_regular"
             android:text="@string/login"
-            android:textColor="@android:color/white"
             android:visibility="visible"
             app:layout_constraintEnd_toEndOf="@+id/welcome_text"
             app:layout_constraintStart_toStartOf="@+id/welcome_text"
@@ -61,7 +56,6 @@
             android:layout_height="wrap_content"
             android:layout_marginTop="20dp"
             android:text="@string/logged_in_user"
-            android:textColor="@android:color/white"
             android:textSize="@dimen/text_normal"
             android:visibility="gone"
             app:layout_constraintEnd_toEndOf="@+id/welcome_text"

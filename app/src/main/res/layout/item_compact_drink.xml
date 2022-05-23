@@ -7,7 +7,7 @@
 
         <variable
             name="item"
-            type="pt.hventura.mycoktails.data.models.CompactDrink" />
+            type="pt.hventura.mycoktails.data.models.Drink" />
 
     </data>
 
@@ -16,7 +16,7 @@
         android:layout_width="match_parent"
         android:layout_height="wrap_content"
         android:layout_margin="@dimen/margin_small"
-        app:cardCornerRadius="15dp"
+        app:cardCornerRadius="10dp"
         app:cardElevation="10dp">
 
         <androidx.constraintlayout.widget.ConstraintLayout
@@ -24,28 +24,27 @@
             android:layout_height="match_parent"
             android:padding="@dimen/padding_normal">
 
-            <ImageView
+            <de.hdodenhof.circleimageview.CircleImageView
                 android:id="@+id/compactDrinkThumb"
-                android:layout_width="70dp"
-                android:layout_height="70dp"
+                android:layout_width="75dp"
+                android:layout_height="75dp"
                 android:contentDescription="@string/preview_description"
-                android:scaleType="fitXY"
                 android:urlImage="@{item.imgPreview}"
+                app:civ_border_color="@color/primary_dark_color"
+                app:civ_border_width="2dp"
                 app:layout_constraintBottom_toBottomOf="parent"
                 app:layout_constraintStart_toStartOf="parent"
                 app:layout_constraintTop_toTopOf="parent"
-                tools:srcCompat="@tools:sample/backgrounds/scenic" />
+                tools:src="@tools:sample/backgrounds/scenic" />
 
             <TextView
                 android:id="@+id/title"
                 android:layout_width="0dp"
                 android:layout_height="match_parent"
                 android:layout_marginStart="@dimen/margin_normal"
-                android:fontFamily="@font/ubuntu"
                 android:gravity="start"
                 android:maxLines="2"
                 android:text="@{item.strDrink}"
-                android:textColor="@android:color/black"
                 android:textSize="@dimen/text_medium"
                 app:layout_constraintEnd_toEndOf="parent"
                 app:layout_constraintStart_toEndOf="@id/compactDrinkThumb"
@@ -57,7 +56,6 @@
                 android:layout_width="wrap_content"
                 android:layout_height="wrap_content"
                 android:layout_marginStart="@dimen/margin_normal"
-                android:fontFamily="@font/ubuntu"
                 android:text="@string/item_in_database"
                 app:layout_constraintBottom_toBottomOf="parent"
                 app:layout_constraintStart_toEndOf="@id/compactDrinkThumb" />
@@ -67,6 +65,7 @@
                 android:layout_height="0dp"
                 android:layout_marginStart="@dimen/margin_small"
                 android:applyIcon="@{item.existsInDB}"
+                android:contentDescription="@string/database_description"
                 app:layout_constraintBottom_toBottomOf="@id/textItemInDb"
                 app:layout_constraintStart_toEndOf="@id/textItemInDb"
                 app:layout_constraintTop_toTopOf="@id/textItemInDb"
@@ -83,7 +82,7 @@
                 app:layout_constraintBottom_toBottomOf="parent"
                 app:layout_constraintEnd_toEndOf="parent" />
 
-
         </androidx.constraintlayout.widget.ConstraintLayout>
+
     </androidx.cardview.widget.CardView>
 </layout>

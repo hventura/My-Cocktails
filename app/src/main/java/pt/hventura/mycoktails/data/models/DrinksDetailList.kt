@@ -1,18 +1,20 @@
 package pt.hventura.mycoktails.data.models
 
+import android.os.Parcelable
 import androidx.room.Entity
 import androidx.room.PrimaryKey
 import com.squareup.moshi.Json
 import com.squareup.moshi.JsonClass
+import kotlinx.parcelize.Parcelize
 import pt.hventura.mycoktails.utils.readProperties
 
-data class DrinkList(
-    val drinks: List<Drink>
+data class DrinksDetailList(
+    val drinks: List<DrinkDetail>
 )
 
-@Entity(tableName = "detailed_drinks")
+@Entity(tableName = "drinks_details")
 @JsonClass(generateAdapter = true)
-data class Drink(
+data class DrinkDetail(
     @PrimaryKey
     val idDrink: String,
     val strDrink: String,
@@ -66,16 +68,43 @@ data class Drink(
     val strImageSource: String?,
     val strImageAttribution: String?,
     val strCreativeCommonsConfirmed: String?,
-    val dateModified: String?,
-    var isFavourite: Boolean = false
+    val dateModified: String?
 )
+
+@Parcelize
+data class DrinkForDetail(
+    val idDrink: String,
+    val strDrink: String,
+    val strDrinkAlternate: String?,
+    val strTags: String?,
+    val strVideo: String?,
+    val strCategory: String?,
+    val strIBA: String?,
+    val strAlcoholic: String?,
+    val strGlass: String?,
+    val strInstructions: String?,
+    val strInstructionsES: String?,
+    val strInstructionsDE: String?,
+    val strInstructionsFR: String?,
+    val strInstructionsIT: String?,
+    val strInstructionsZH_HANS: String?,
+    val strInstructionsZH_HANT: String?,
+    val strDrinkThumb: String?,
+    var ingredientsList: ArrayList<String>?,
+    var measureList: ArrayList<String>?,
+    var numberIngredients: Int = 0,
+    val strImageSource: String?,
+    val strImageAttribution: String?,
+    val strCreativeCommonsConfirmed: String?,
+    val dateModified: String?
+) : Parcelable
 
 /**
  * I could use the Drink class. This was just for practicing purpose.
  * Started as an exercise for me but end up to use it as is.
  * It was just faster to manipulate the information with an array rather than by property.
  **/
-fun Drink.toDetail(): DrinkForDetail {
+fun DrinkDetail.toDetail(): DrinkForDetail {
     val ingredientsList = arrayListOf<String>()
     val measuresList = arrayListOf<String>()
     var count = 0
@@ -118,7 +147,6 @@ fun Drink.toDetail(): DrinkForDetail {
         strImageSource,
         strImageAttribution,
         strCreativeCommonsConfirmed,
-        dateModified,
-        isFavourite
+        dateModified
     )
 }

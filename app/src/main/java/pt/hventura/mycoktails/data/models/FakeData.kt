@@ -2,7 +2,7 @@ package pt.hventura.mycoktails.data.models
 
 object FakeData {
 
-    val drink = Drink(
+    val drink = DrinkDetail(
         "15300",
         "3-Mile Long Island Iced Tea",
         null,

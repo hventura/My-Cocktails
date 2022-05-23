@@ -1,24 +1,68 @@
-<resources xmlns:tools="http://schemas.android.com/tools">
+<resources>
     <!-- Base application theme. -->
-    <style name="Theme.MyCocktails" parent="Theme.MaterialComponents.Light.NoActionBar">
+    <style name="Theme.MyCocktails" parent="Theme.MaterialComponents.DayNight.NoActionBar">
         <!-- Primary brand color. -->
         <item name="colorPrimary">@color/primary_color</item>
-        <item name="colorPrimaryVariant">@color/primary_color</item>
-        <item name="colorOnPrimary">@color/onPrimary</item>
+        <item name="colorPrimaryVariant">@color/primary_dark_color</item>
+        <item name="colorOnPrimary">@android:color/black</item>
         <!-- Secondary brand color. -->
-        <item name="colorSecondary">@color/secondaryColor</item>
-        <item name="colorSecondaryVariant">@color/secondaryColor</item>
-        <item name="colorOnSecondary">@color/onPrimary</item>
+        <item name="colorSecondary">@color/secondary_color</item>
+        <item name="colorSecondaryVariant">@color/secondary_dark_color</item>
+        <item name="colorOnSecondary">@android:color/black</item>
         <!-- Status bar color. -->
-        <item name="android:statusBarColor" tools:targetApi="l">@color/status_bar_color</item>
+        <item name="android:statusBarColor">@color/primary_dark_color</item>
         <!-- Customize your theme here. -->
+
+        <item name="android:textViewStyle">@style/DefaultText</item>
+        <item name="materialButtonStyle">@style/mainButton</item>
         <item name="drawerArrowStyle">@style/DrawerArrowStyle</item>
         <item name="colorControlNormal">@android:color/white</item>
     </style>
 
-    <style name="Theme.MyCocktails.AppBarOverlay" parent="ThemeOverlay.AppCompat.Dark.ActionBar" />
+    <style name="DefaultText" parent="TextAppearance.AppCompat">
+        <item name="fontFamily">@font/ubuntu</item>
+        <item name="android:textColor">@color/primary_text_color</item>
+        <item name="android:textSize">@dimen/text_normal</item>
+    </style>
 
-    <style name="Theme.MyCocktails.PopupOverlay" parent="ThemeOverlay.AppCompat.Light" />
+    <style name="DefaultText.WelcomeTitle" parent="TextAppearance.AppCompat">
+        <item name="android:textSize">@dimen/text_title_welcome</item>
+    </style>
+
+    <style name="DefaultText.SubWelcomeTitle" parent="TextAppearance.AppCompat">
+        <item name="fontFamily">@font/ubuntu_bold</item>
+        <item name="android:textSize">@dimen/text_title_sub_welcome</item>
+    </style>
+
+    <style name="mainButton" parent="Widget.MaterialComponents.Button">
+        <item name="backgroundTint">@color/primary_color</item>
+        <item name="strokeColor">@color/secondary_dark_color</item>
+        <item name="strokeWidth">@dimen/button_stroke_size</item>
+        <item name="fontFamily">@font/ubuntu_bold</item>
+        <item name="android:textSize">@dimen/text_normal</item>
+        <item name="android:textColor">@android:color/black</item>
+        <item name="cornerRadius">@dimen/button_corner_radius</item>
+    </style>
+
+    <style name="confirmButton" parent="Widget.MaterialComponents.Button">
+        <item name="backgroundTint">@color/primary_dark_color</item>
+        <item name="strokeColor">@color/confirmation_color</item>
+        <item name="strokeWidth">@dimen/button_stroke_size</item>
+        <item name="fontFamily">@font/ubuntu_bold</item>
+        <item name="android:textSize">@dimen/text_normal</item>
+        <item name="android:textColor">@android:color/white</item>
+        <item name="cornerRadius">@dimen/button_corner_radius</item>
+    </style>
+
+    <style name="cancelButton" parent="Widget.MaterialComponents.Button">
+        <item name="backgroundTint">@android:color/white</item>
+        <item name="strokeColor">@color/primary_dark_color</item>
+        <item name="strokeWidth">@dimen/button_stroke_size</item>
+        <item name="fontFamily">@font/ubuntu</item>
+        <item name="android:textSize">@dimen/text_normal</item>
+        <item name="android:textColor">@android:color/black</item>
+        <item name="cornerRadius">@dimen/button_corner_radius</item>
+    </style>
 
     <style name="CustomWingInner">
         <item name="android:layout_width">match_parent</item>
@@ -34,7 +78,7 @@
         <item name="android:layout_marginRight">16dp</item>
     </style>
 
-    <style name="DrawerArrowStyle" parent="@style/Widget.AppCompat.DrawerArrowToggle">
+    <style name="DrawerArrowStyle" parent="Widget.AppCompat.DrawerArrowToggle">
         <item name="spinBars">true</item>
         <item name="color">@android:color/white</item>
     </style>

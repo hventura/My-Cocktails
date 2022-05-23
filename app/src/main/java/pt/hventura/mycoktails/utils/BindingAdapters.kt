@@ -8,6 +8,7 @@ import androidx.recyclerview.widget.RecyclerView
 import coil.load
 import coil.request.CachePolicy
 import coil.transform.RoundedCornersTransformation
+import de.hdodenhof.circleimageview.CircleImageView
 import pt.hventura.mycoktails.R
 import pt.hventura.mycoktails.base.BaseRecyclerViewAdapter
 
@@ -38,9 +39,6 @@ object BindingAdapters {
             memoryCachePolicy(CachePolicy.ENABLED)
             placeholder(R.drawable.ic_image_error)
             error(R.drawable.ic_image_error)
-            crossfade(true)
-            crossfade(500)
-            transformations(RoundedCornersTransformation(25f))
         }
     }
 

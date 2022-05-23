@@ -7,10 +7,10 @@ import androidx.room.RoomDatabase
 import pt.hventura.mycoktails.BuildConfig
 import pt.hventura.mycoktails.data.database.dao.CocktailsDao
 import pt.hventura.mycoktails.data.models.Categories
-import pt.hventura.mycoktails.data.models.CompactDrink
 import pt.hventura.mycoktails.data.models.Drink
+import pt.hventura.mycoktails.data.models.DrinkDetail
 
-@Database(entities = [Categories::class, CompactDrink::class, Drink::class], version = 1, exportSchema = false)
+@Database(entities = [Categories::class, Drink::class, DrinkDetail::class], version = 1, exportSchema = false)
 abstract class CocktailsDatabase : RoomDatabase() {
 
     abstract val cocktailsDao: CocktailsDao

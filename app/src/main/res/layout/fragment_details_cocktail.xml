@@ -22,6 +22,7 @@
             android:layout_height="wrap_content"
             android:fontFamily="@font/ubuntu_bold"
             android:padding="10dp"
+            android:text="@{drink.strDrink}"
             android:textAlignment="center"
             android:textColor="@color/primary_color"
             android:textSize="20sp"

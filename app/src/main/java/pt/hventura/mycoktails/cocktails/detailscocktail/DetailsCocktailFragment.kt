@@ -11,8 +11,8 @@ import org.koin.androidx.viewmodel.ext.android.sharedViewModel
 import pt.hventura.mycoktails.R
 import pt.hventura.mycoktails.base.BaseFragment
 import pt.hventura.mycoktails.cocktails.listcocktails.CocktailListViewModel
+import pt.hventura.mycoktails.data.models.DrinkForDetail
 import pt.hventura.mycoktails.databinding.FragmentDetailsCocktailBinding
-import timber.log.Timber
 
 class DetailsCocktailFragment : BaseFragment() {
 
@@ -25,13 +25,20 @@ class DetailsCocktailFragment : BaseFragment() {
         savedInstanceState: Bundle?
     ): View {
         binding = DataBindingUtil.inflate(layoutInflater, R.layout.fragment_details_cocktail, container, false)
-        binding.drink = args.drinkDetail
 
-        binding.drinkGlassType.text = resources.getString(R.string.glassType, args.drinkDetail.strGlass)
+        populateDetails(args.drinkDetail!!)
 
-        val ingredientsList = args.drinkDetail.ingredientsList
-        val measureList = args.drinkDetail.measureList
-        val numberIngredients = args.drinkDetail.numberIngredients
+        return binding.root
+    }
+
+    private fun populateDetails(drink: DrinkForDetail) {
+        binding.drink = drink
+
+        binding.drinkGlassType.text = resources.getString(R.string.glassType, drink.strGlass)
+
+        val ingredientsList = drink.ingredientsList
+        val measureList = drink.measureList
+        val numberIngredients = drink.numberIngredients
 
         ingredientsList?.forEachIndexed { index, ingredient ->
             val view = layoutInflater.inflate(R.layout.item_ingredient, null)
@@ -68,8 +75,6 @@ class DetailsCocktailFragment : BaseFragment() {
             binding.drinkTopping.text = null
             binding.drinkTopping.visibility = View.GONE
         }
-
-        return binding.root
     }
 
 }

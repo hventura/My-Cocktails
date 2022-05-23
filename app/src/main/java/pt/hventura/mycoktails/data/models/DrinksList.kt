@@ -3,12 +3,12 @@ package pt.hventura.mycoktails.data.models
 import androidx.room.Entity
 import androidx.room.PrimaryKey
 
-data class ListByCategory(
-    val drinks: MutableList<CompactDrink>
+data class DrinksList(
+    val drinks: List<Drink>
 )
 
 @Entity(tableName = "drinks_list")
-data class CompactDrink(
+data class Drink(
     @PrimaryKey
     val idDrink: String,
     val strDrink: String,

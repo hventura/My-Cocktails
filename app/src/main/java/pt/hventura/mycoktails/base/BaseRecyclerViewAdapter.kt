@@ -12,12 +12,12 @@ import androidx.databinding.ViewDataBinding
 import androidx.lifecycle.LifecycleOwner
 import androidx.recyclerview.widget.RecyclerView
 import pt.hventura.mycoktails.R
-import timber.log.Timber
 
 abstract class BaseRecyclerViewAdapter<T>(private val callback: ((it: View, item: T, position: Int) -> Unit)? = null) :
     RecyclerView.Adapter<DataBindingViewHolder<T>>() {
 
     private var _items: MutableList<T> = mutableListOf()
+    private var animate: Boolean = true
 
     /**
      * Returns the _items data
@@ -41,18 +41,26 @@ abstract class BaseRecyclerViewAdapter<T>(private val callback: ((it: View, item
     override fun onBindViewHolder(holder: DataBindingViewHolder<T>, position: Int) {
         val mainBinding = holder.getRootBinding()
         val item = getItem(position)
+
+        if (animate) {
+            mainBinding.findViewById<CardView>(R.id.cocktailCardView)
+                .startAnimation(AnimationUtils.loadAnimation(mainBinding.context, R.anim.rcv_row_anim))
+        }
+        animate = true
+
         holder.bind(item)
-        mainBinding.findViewById<CardView>(R.id.cocktailCardView).startAnimation(AnimationUtils.loadAnimation(mainBinding.context, R.anim.rcv_row_anim))
         val favouriteStar = mainBinding.findViewById<ImageView>(R.id.favourite)
         holder.itemView.setOnClickListener {
             callback?.invoke(it, item, position)
         }
         favouriteStar.setOnClickListener {
+            animate = false
             callback?.invoke(it, item, position)
+
         }
     }
 
-    fun getItem(position: Int) = _items[position]
+    private fun getItem(position: Int) = _items[position]
 
     /**
      * Adds data to the actual Dataset

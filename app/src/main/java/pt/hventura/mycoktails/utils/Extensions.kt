@@ -5,12 +5,15 @@ import android.animation.AnimatorListenerAdapter
 import android.app.Activity
 import android.content.Context
 import android.content.Intent
+import android.net.ConnectivityManager
+import android.net.NetworkCapabilities
 import android.view.View
 import androidx.appcompat.app.AppCompatActivity
 import androidx.fragment.app.Fragment
 import androidx.recyclerview.widget.LinearLayoutManager
 import androidx.recyclerview.widget.RecyclerView
 import pt.hventura.mycoktails.base.BaseRecyclerViewAdapter
+import timber.log.Timber
 import kotlin.reflect.full.declaredMemberProperties
 
 inline fun <reified T : Activity> Context.startActivity() {
@@ -18,9 +21,27 @@ inline fun <reified T : Activity> Context.startActivity() {
     startActivity(intent)
 }
 
-inline fun <reified T: Activity> Fragment.startActivity() {
+inline fun <reified T : Activity> Fragment.startActivity() {
     val intent = Intent(requireContext(), T::class.java)
     requireActivity().startActivity(intent)
+}
+
+fun Context.isConnected(): Boolean {
+    val connectivityManager = this.getSystemService(Context.CONNECTIVITY_SERVICE) as ConnectivityManager
+    val capabilities = connectivityManager.getNetworkCapabilities(connectivityManager.activeNetwork)
+    if (capabilities != null) {
+        if (capabilities.hasTransport(NetworkCapabilities.TRANSPORT_CELLULAR)) {
+            Timber.i("NetworkCapabilities.TRANSPORT_CELLULAR")
+            return true
+        } else if (capabilities.hasTransport(NetworkCapabilities.TRANSPORT_WIFI)) {
+            Timber.i("NetworkCapabilities.TRANSPORT_WIFI")
+            return true
+        } else if (capabilities.hasTransport(NetworkCapabilities.TRANSPORT_ETHERNET)) {
+            Timber.i("NetworkCapabilities.TRANSPORT_ETHERNET")
+            return true
+        }
+    }
+    return false
 }
 
 fun Fragment.finish() {
@@ -55,9 +76,7 @@ fun <T> readProperties(instance: Any, propertyName: String): T? {
 
 fun Fragment.setDisplayHomeAsUpEnabled(bool: Boolean) {
     if (activity is AppCompatActivity) {
-        (activity as AppCompatActivity).supportActionBar?.setDisplayHomeAsUpEnabled(
-            bool
-        )
+        (activity as AppCompatActivity).supportActionBar?.setDisplayHomeAsUpEnabled(bool)
     }
 }
 

@@ -1,14 +1,14 @@
 <?xml version="1.0" encoding="utf-8"?>
 <resources>
-    <color name="primary_color">#0F4C75</color>
-    <color name="status_bar_color">#073555</color>
-    <color name="secondaryColor">#29ABE2</color>
-    <color name="mainBackgroundColor">#5B97A8</color>
-    <color name="textBackgroundColor">#F9F9F9</color>
-    <color name="menuBackgroundColor">#EDEDED</color>
-    <color name="listBackgroundColor">#8594B6C3</color>
-    <color name="onPrimary">#AAAAAA</color>
-    <color name="errorColor">#DB4437</color>
-    <color name="cardColor">#34515151</color>
-    <color name="favouriteColor">#FFC107</color>
+    <color name="primary_color">#90a4ae</color>
+    <color name="primary_light_color">#c1d5e0</color>
+    <color name="primary_dark_color">#62757f</color>
+    <color name="secondary_color">#ff6d00</color>
+    <color name="secondary_light_color">#ff9e40</color>
+    <color name="secondary_dark_color">#c43c00</color>
+    <color name="primary_text_color">#000000</color>
+    <color name="secondary_text_color">#000000</color>
+    <color name="error_color">#DB4437</color>
+    <color name="favourite_color">#FFC107</color>
+    <color name="confirmation_color">#3F8713</color>
 </resources>

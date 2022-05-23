@@ -11,29 +11,22 @@ import pt.hventura.mycoktails.R
 import pt.hventura.mycoktails.base.BaseFragment
 import pt.hventura.mycoktails.cocktails.listcocktails.CocktailListAdapter
 import pt.hventura.mycoktails.cocktails.listcocktails.CocktailListViewModel
-import pt.hventura.mycoktails.data.models.CompactDrink
+import pt.hventura.mycoktails.data.models.Drink
 import pt.hventura.mycoktails.databinding.FragmentFavouritesCocktailBinding
 import pt.hventura.mycoktails.utils.setup
-import timber.log.Timber
 
 class FavouritesCocktailFragment : BaseFragment() {
 
     private lateinit var binding: FragmentFavouritesCocktailBinding
     private lateinit var adapter: CocktailListAdapter
-    private var favouriteList = mutableListOf<CompactDrink>()
+    private var favouriteList = listOf<Drink>()
     override val viewModel: CocktailListViewModel by sharedViewModel()
 
-    override fun onCreateView(
-        inflater: LayoutInflater, container: ViewGroup?,
-        savedInstanceState: Bundle?
-    ): View {
+    override fun onCreateView(inflater: LayoutInflater, container: ViewGroup?, savedInstanceState: Bundle?): View {
         binding = DataBindingUtil.inflate(layoutInflater, R.layout.fragment_favourites_cocktail, container, false)
         binding.viewModel = viewModel
-
-        initializeObservables()
-
-        viewModel.loadFavouriteDrinks()
-
+        registerObservables()
+        viewModel.loadCocktailFavouritesList()
         return binding.root
     }
 
@@ -43,9 +36,11 @@ class FavouritesCocktailFragment : BaseFragment() {
         setupFavouritesRecyclerView()
     }
 
-    private fun initializeObservables() {
-        viewModel.favouriteCocktailsList.observe(requireActivity()) {
-            favouriteList = it
+    private fun registerObservables() {
+        viewModel.favouriteSaved.observe(requireActivity()) {
+            if (it) {
+                viewModel.loadCocktailFavouritesList()
+            }
         }
     }
 
@@ -54,7 +49,7 @@ class FavouritesCocktailFragment : BaseFragment() {
             when (view) {
                 is ImageView -> {
                     if (view.id == R.id.favourite) {
-                        viewModel.setDrinkAsFavourite(item.idDrink)
+                        viewModel.setDrinkAsFavourite(item.idDrink, !item.favourite)
                     }
                 }
                 else -> viewModel.loadCocktailDetail(item.idDrink, true)

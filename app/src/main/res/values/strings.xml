@@ -1,25 +1,31 @@
 <resources>
     <string name="app_name">MyCoktails</string>
     <!-- Login -->
-    <string name="welcome">Welcome</string>
-    <string name="sub_welcome">To Cocktails App</string>
+    <string name="welcome">Welcome to</string>
+    <string name="sub_welcome">Cocktails App</string>
     <string name="logo_description">Image of a cocktail</string>
     <string name="login_choose_text">Please choose login method!</string>
     <string name="login">Login</string>
     <string name="logged_in_user">You are logged in as %s</string>
 
     <!-- Drawer Menu -->
-    <string name="open">Abrir</string>
-    <string name="close">Fechar</string>
+    <string name="open">Open</string>
+    <string name="close">Close</string>
 
     <!-- Geral -->
-    <string name="titulo">Titulo</string>
+    <string name="titulo">Title</string>
+    <string name="yes">Yes!</string>
+    <string name="no">No</string>
+    <string name="turn_on_internet">Turn on internet</string>
+    <string name="wifi_text">It appears there is no information to show. Do you want to turn internet on and try again?</string>
 
     <!-- List Cocktails -->
     <string name="list_cocktails">List of Cocktails</string>
     <string name="preview_description">Image thumbnail of cocktail</string>
     <string name="favourite_description">Favourite Icon. Click to add to favourites list</string>
+    <string name="database_description">In database Icon.</string>
     <string name="no_data">No data found</string>
+    <string name="no_favourites">No favourites found</string>
     <string name="item_in_database">Item in database: </string>
 
     <!-- Random Cocktail -->
@@ -38,6 +44,7 @@
     <string name="cocktail_image_description">Image of cocktail loading</string>
     <string name="random_cocktail_title">Get a random cocktail from your favorite list!</string>
     <string name="random_cocktail_explanation">Shake your phone to see a new cokctail!</string>
+
 
 
 </resources>
