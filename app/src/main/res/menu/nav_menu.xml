@@ -18,6 +18,11 @@
         android:title="Favorites" />
 
     <item
+        android:id="@+id/cocktailMapFragment"
+        android:icon="@drawable/ic_map"
+        android:title="Places for Cocktails" />
+
+    <item
         android:id="@+id/menuPerfil"
         android:title="Perfil">
         <menu>

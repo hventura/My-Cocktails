@@ -10,73 +10,80 @@
             type="pt.hventura.mycoktails.data.models.DrinkForDetail" />
     </data>
 
-    <androidx.constraintlayout.widget.ConstraintLayout
+    <androidx.constraintlayout.motion.widget.MotionLayout
+        android:id="@+id/constraintLayout"
         android:layout_width="match_parent"
         android:layout_height="match_parent"
-        android:padding="10dp"
-        tools:context=".cocktails.detailscocktail.DetailsCocktailFragment">
-
-        <TextView
-            android:id="@+id/drinkTitle"
-            android:layout_width="match_parent"
-            android:layout_height="wrap_content"
-            android:fontFamily="@font/ubuntu_bold"
-            android:padding="10dp"
-            android:text="@{drink.strDrink}"
-            android:textAlignment="center"
-            android:textColor="@color/primary_color"
-            android:textSize="20sp"
-            android:textStyle="bold"
-            app:layout_constraintEnd_toEndOf="parent"
-            app:layout_constraintStart_toStartOf="parent"
-            app:layout_constraintTop_toTopOf="parent"
-            tools:text="Aperol Sprits" />
-
+        app:layoutDescription="@xml/fragment_details_cocktail_scene">
 
         <ImageView
             android:id="@+id/drinkImage"
             android:layout_width="match_parent"
             android:layout_height="270dp"
             android:contentDescription="@string/preview_description"
-            android:scaleType="fitCenter"
+            android:scaleType="centerCrop"
             android:urlImage="@{drink.strDrinkThumb}"
             app:layout_constraintEnd_toEndOf="parent"
             app:layout_constraintStart_toStartOf="parent"
-            app:layout_constraintTop_toBottomOf="@id/drinkTitle"
-            tools:srcCompat="@tools:sample/avatars" />
+            app:layout_constraintTop_toTopOf="parent"
+            tools:src="@tools:sample/backgrounds/scenic" />
 
-        <View
-            android:id="@+id/lineSeparator"
+        <TextView
+            android:id="@+id/drinkTitle"
             android:layout_width="match_parent"
-            android:layout_height="5dp"
-            android:layout_marginTop="@dimen/margin_small"
-            android:background="@color/primary_color"
+            android:layout_height="wrap_content"
+            android:layout_marginStart="@dimen/margin_normal"
+            android:layout_marginTop="@dimen/margin_normal"
+            android:layout_marginEnd="@dimen/margin_normal"
+            android:background="@color/primary_light_color_transparent"
+            android:fontFamily="@font/ubuntu_bold"
+            android:padding="10dp"
+            android:text="@{drink.strDrink}"
+            android:textAlignment="center"
+            android:textColor="@color/primary_text_color"
+            android:textSize="20sp"
+            android:textStyle="bold"
             app:layout_constraintEnd_toEndOf="parent"
             app:layout_constraintStart_toStartOf="parent"
-            app:layout_constraintTop_toBottomOf="@id/drinkImage" />
+            app:layout_constraintTop_toBottomOf="@id/drinkImage"
+            tools:text="Drink Name" />
 
         <ScrollView
+            android:id="@+id/scroolDrinkDetails"
             android:layout_width="match_parent"
             android:layout_height="0dp"
-            android:layout_marginTop="@dimen/margin_small"
+            android:layout_marginStart="@dimen/margin_normal"
+            android:layout_marginEnd="@dimen/margin_normal"
+            android:layout_marginBottom="@dimen/margin_normal"
             app:layout_constraintBottom_toBottomOf="parent"
             app:layout_constraintEnd_toEndOf="parent"
             app:layout_constraintStart_toStartOf="parent"
-            app:layout_constraintTop_toBottomOf="@id/lineSeparator">
+            app:layout_constraintTop_toBottomOf="@id/drinkTitle">
 
             <androidx.constraintlayout.widget.ConstraintLayout
                 android:id="@+id/clDrinkDetails"
                 android:layout_width="match_parent"
                 android:layout_height="wrap_content">
 
+                <View
+                    android:id="@+id/lineSeparator"
+                    android:layout_width="match_parent"
+                    android:layout_height="5dp"
+                    android:layout_marginTop="@dimen/margin_small"
+                    android:background="@color/primary_color"
+                    app:layout_constraintEnd_toEndOf="parent"
+                    app:layout_constraintStart_toStartOf="parent"
+                    app:layout_constraintTop_toTopOf="parent" />
+
                 <LinearLayout
                     android:id="@+id/llGlassAndAlcoholic"
                     android:layout_width="match_parent"
                     android:layout_height="40dp"
+                    android:layout_marginTop="@dimen/margin_small"
                     android:orientation="horizontal"
                     app:layout_constraintEnd_toEndOf="parent"
                     app:layout_constraintStart_toStartOf="parent"
-                    app:layout_constraintTop_toTopOf="parent">
+                    app:layout_constraintTop_toBottomOf="@id/lineSeparator">
 
                     <TextView
                         android:id="@+id/drinkGlassType"
@@ -138,7 +145,8 @@
                     app:layout_constraintEnd_toEndOf="parent"
                     app:layout_constraintStart_toStartOf="parent"
                     app:layout_constraintTop_toBottomOf="@id/drinkListIngredients"
-                    tools:text="Top with " />
+                    tools:text="Top with "
+                    tools:visibility="visible" />
 
                 <TextView
                     android:id="@+id/drinkInstructionsTitle"
@@ -165,5 +173,6 @@
 
         </ScrollView>
 
-    </androidx.constraintlayout.widget.ConstraintLayout>
+    </androidx.constraintlayout.motion.widget.MotionLayout>
+
 </layout>

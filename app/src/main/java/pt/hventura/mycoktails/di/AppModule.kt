@@ -11,6 +11,7 @@ import org.koin.core.module.Module
 import org.koin.dsl.module
 import pt.hventura.mycoktails.BuildConfig
 import pt.hventura.mycoktails.authentication.AuthenticationViewModel
+import pt.hventura.mycoktails.cocktails.coctailsMap.CocktailMapViewModel
 import pt.hventura.mycoktails.cocktails.listcocktails.CocktailListViewModel
 import pt.hventura.mycoktails.cocktails.randomcocktail.RandomCocktailViewModel
 import pt.hventura.mycoktails.data.CocktailsRepositoryImpl
@@ -40,6 +41,9 @@ object AppModule {
             }
             viewModel {
                 RandomCocktailViewModel(get(), get() as CocktailsRepositoryImpl)
+            }
+            viewModel {
+                CocktailMapViewModel(get(), get() as CocktailsRepositoryImpl)
             }
             single {
                 CocktailsRepositoryImpl(get(), get())

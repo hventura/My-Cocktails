@@ -13,23 +13,24 @@
     <androidx.constraintlayout.widget.ConstraintLayout
         android:layout_width="match_parent"
         android:layout_height="match_parent"
-        android:padding="10dp"
         tools:context=".cocktails.detailscocktail.DetailsCocktailFragment">
 
         <TextView
             android:id="@+id/drinkTitle"
             android:layout_width="match_parent"
             android:layout_height="wrap_content"
+            android:background="@color/primary_light_color_transparent"
             android:fontFamily="@font/ubuntu_bold"
             android:padding="10dp"
+            android:text="@{drink.strDrink}"
             android:textAlignment="center"
-            android:textColor="@color/primary_color"
+            android:textColor="@color/primary_text_color"
             android:textSize="20sp"
             android:textStyle="bold"
             app:layout_constraintEnd_toEndOf="parent"
             app:layout_constraintStart_toStartOf="parent"
             app:layout_constraintTop_toTopOf="parent"
-            tools:text="Aperol Sprits" />
+            tools:text="Drink Name" />
 
 
         <LinearLayout
@@ -37,9 +38,9 @@
             android:layout_height="0dp"
             android:orientation="horizontal"
             android:weightSum="2"
+            app:layout_constraintBottom_toBottomOf="parent"
             app:layout_constraintEnd_toEndOf="parent"
             app:layout_constraintStart_toStartOf="parent"
-            app:layout_constraintBottom_toBottomOf="parent"
             app:layout_constraintTop_toBottomOf="@id/drinkTitle">
 
             <ImageView
@@ -49,7 +50,6 @@
                 android:layout_weight="1"
                 android:contentDescription="@string/preview_description"
                 android:scaleType="fitCenter"
-                android:padding="10dp"
                 android:urlImage="@{drink.strDrinkThumb}"
                 app:layout_constraintEnd_toEndOf="parent"
                 app:layout_constraintStart_toStartOf="parent"
@@ -57,15 +57,16 @@
                 tools:srcCompat="@tools:sample/avatars" />
 
             <View
-                android:id="@+id/lineSeparator"
+                android:id="@+id/lineSeparatorLand"
                 android:layout_width="5dp"
                 android:layout_height="match_parent"
-                android:layout_marginEnd="@dimen/margin_large"
-                android:background="@color/primary_color" />
-
+                android:background="@color/primary_light_color_transparent" />
 
             <ScrollView
+                android:id="@+id/scroolDrinkDetailsLand"
                 android:layout_width="0dp"
+                android:layout_marginTop="@dimen/margin_small"
+                android:paddingStart="@dimen/padding_normal"
                 android:layout_height="match_parent"
                 android:layout_weight="1">
 

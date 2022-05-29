@@ -47,4 +47,9 @@
             android:id="@+id/action_detailsCocktailFragment_to_favouritesCocktailFragment"
             app:destination="@id/favouritesCocktailFragment" />
     </fragment>
+    <fragment
+        android:id="@+id/cocktailMapFragment"
+        android:name="pt.hventura.mycoktails.cocktails.coctailsMap.CocktailMapFragment"
+        android:label="fragment_cocktail_map"
+        tools:layout="@layout/fragment_cocktail_map" />
 </navigation>

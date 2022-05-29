@@ -2,7 +2,9 @@ package pt.hventura.mycoktails.cocktails
 
 import android.os.Bundle
 import android.view.MenuItem
+import android.view.View
 import android.view.WindowManager
+import android.widget.TextView
 import androidx.appcompat.app.ActionBarDrawerToggle
 import androidx.appcompat.app.AppCompatActivity
 import androidx.core.view.GravityCompat
@@ -21,7 +23,6 @@ import pt.hventura.mycoktails.databinding.ActivityCocktailsBinding
 import pt.hventura.mycoktails.utils.LoginControl
 import pt.hventura.mycoktails.utils.PreferencesManager
 import pt.hventura.mycoktails.utils.startActivity
-import timber.log.Timber
 
 class CocktailsActivity : AppCompatActivity(), DrawerController {
 
@@ -30,6 +31,7 @@ class CocktailsActivity : AppCompatActivity(), DrawerController {
     private lateinit var drawerLayout: DrawerLayout
     private lateinit var navView: NavigationView
     private lateinit var toggle: ActionBarDrawerToggle
+    lateinit var headerView: View // Not private so i can change it later on if needed
     val viewModel: CocktailListViewModel by viewModel()
 
     override fun onCreate(savedInstanceState: Bundle?) {
@@ -70,6 +72,9 @@ class CocktailsActivity : AppCompatActivity(), DrawerController {
 
         // NAVIGATION
         navView = binding.navigationView
+        headerView = navView.getHeaderView(0)
+        headerView.findViewById<TextView>(R.id.user_name).text = viewModel.userName
+        headerView.findViewById<TextView>(R.id.user_email).text = viewModel.userEmail
         navView.menu.findItem(R.id.btnLogout).setOnMenuItemClickListener {
             LoginControl.logout()
             startActivity<AuthenticationActivity>()
@@ -86,15 +91,19 @@ class CocktailsActivity : AppCompatActivity(), DrawerController {
                 }
                 R.id.randomCocktailFragment -> {
                     binding.tvTitle.text = resources.getText(R.string.random_cocktail)
-                    showBackButton(true)
+                    showBackButton(false)
                 }
                 R.id.favouritesCocktailFragment -> {
                     binding.tvTitle.text = resources.getText(R.string.favourites_cocktail)
-                    showBackButton(true)
+                    showBackButton(false)
                 }
                 R.id.detailsCocktailFragment -> {
                     binding.tvTitle.text = resources.getString(R.string.details_cocktail)
                     showBackButton(true)
+                }
+                R.id.cocktailMapFragment -> {
+                    binding.tvTitle.text = resources.getString(R.string.map_cocktail)
+                    showBackButton(false)
                 }
             }
         }

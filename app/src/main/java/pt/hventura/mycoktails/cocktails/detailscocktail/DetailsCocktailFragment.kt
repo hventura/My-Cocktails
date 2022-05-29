@@ -5,8 +5,10 @@ import android.view.LayoutInflater
 import android.view.View
 import android.view.ViewGroup
 import android.widget.TextView
+import androidx.constraintlayout.motion.widget.MotionLayout
 import androidx.databinding.DataBindingUtil
 import androidx.navigation.fragment.navArgs
+import com.google.android.material.appbar.AppBarLayout
 import org.koin.androidx.viewmodel.ext.android.sharedViewModel
 import pt.hventura.mycoktails.R
 import pt.hventura.mycoktails.base.BaseFragment

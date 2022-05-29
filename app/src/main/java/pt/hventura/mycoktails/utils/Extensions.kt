@@ -2,16 +2,22 @@ package pt.hventura.mycoktails.utils
 
 import android.animation.Animator
 import android.animation.AnimatorListenerAdapter
+import android.annotation.SuppressLint
 import android.app.Activity
 import android.content.Context
 import android.content.Intent
+import android.graphics.Bitmap
+import android.graphics.Canvas
 import android.net.ConnectivityManager
 import android.net.NetworkCapabilities
 import android.view.View
 import androidx.appcompat.app.AppCompatActivity
+import androidx.core.content.ContextCompat
 import androidx.fragment.app.Fragment
 import androidx.recyclerview.widget.LinearLayoutManager
 import androidx.recyclerview.widget.RecyclerView
+import com.google.android.gms.maps.model.BitmapDescriptor
+import com.google.android.gms.maps.model.BitmapDescriptorFactory
 import pt.hventura.mycoktails.base.BaseRecyclerViewAdapter
 import timber.log.Timber
 import kotlin.reflect.full.declaredMemberProperties
@@ -26,6 +32,7 @@ inline fun <reified T : Activity> Fragment.startActivity() {
     requireActivity().startActivity(intent)
 }
 
+@SuppressLint("MissingPermission")
 fun Context.isConnected(): Boolean {
     val connectivityManager = this.getSystemService(Context.CONNECTIVITY_SERVICE) as ConnectivityManager
     val capabilities = connectivityManager.getNetworkCapabilities(connectivityManager.activeNetwork)
@@ -55,6 +62,18 @@ fun <T> RecyclerView.setup(
         layoutManager = LinearLayoutManager(this.context)
         this.adapter = adapter
     }
+}
+
+fun Context.getBitmapFromDrawable(drawable: Int): BitmapDescriptor {
+    val vectorDrawable = ContextCompat.getDrawable(this, drawable)!!
+    val width = vectorDrawable.intrinsicWidth
+    val height = vectorDrawable.intrinsicHeight
+
+    vectorDrawable.setBounds(0, 0, width, height)
+    val bitmap = Bitmap.createBitmap(width, height, Bitmap.Config.ARGB_8888)
+
+    vectorDrawable.draw(Canvas(bitmap))
+    return BitmapDescriptorFactory.fromBitmap(bitmap)
 }
 
 /**

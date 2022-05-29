@@ -100,13 +100,14 @@ class CocktailListViewModel(private val app: Application, private val repository
                         showLoading.value = false
                         if (fromFav) {
                             navigationCommand.value = NavigationCommand.To(
-                                CocktailListFragmentDirections
-                                    .actionCocktailListFragmentToDetailsCocktailFragment(drinkDetailDB.data.toDetail())
+                                FavouritesCocktailFragmentDirections
+                                    .actionFavouritesCocktailFragmentToDetailsCocktailFragment(drinkDetailDB.data.toDetail())
+
                             )
                         } else {
                             navigationCommand.value = NavigationCommand.To(
-                                FavouritesCocktailFragmentDirections
-                                    .actionFavouritesCocktailFragmentToDetailsCocktailFragment(drinkDetailDB.data.toDetail())
+                                CocktailListFragmentDirections
+                                    .actionCocktailListFragmentToDetailsCocktailFragment(drinkDetailDB.data.toDetail())
                             )
                         }
                     }

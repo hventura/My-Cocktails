@@ -1,6 +1,5 @@
 package pt.hventura.mycoktails.cocktails.randomcocktail
 
-import android.app.Activity
 import android.content.Intent
 import android.graphics.drawable.AnimationDrawable
 import android.hardware.Sensor
@@ -56,8 +55,6 @@ class RandomCocktailFragment : BaseFragment(), SensorEventListener {
             finish()
         }
 
-        setDisplayHomeAsUpEnabled(true)
-
         mSensorManager = ContextCompat.getSystemService(requireContext(), SensorManager::class.java) as SensorManager
         mAccelerometer = mSensorManager.getDefaultSensor(Sensor.TYPE_ACCELEROMETER)
 
@@ -67,16 +64,6 @@ class RandomCocktailFragment : BaseFragment(), SensorEventListener {
     }
 
     private fun registerObservables() {
-        viewModel.shakeMax.observe(requireActivity()) {
-            if (it >= 15) {
-                mSensorManager.unregisterListener(this)
-                val vibe: Vibrator = ContextCompat.getSystemService(requireContext(), Vibrator::class.java) as Vibrator
-                val effect: VibrationEffect = VibrationEffect.createOneShot(2000, VibrationEffect.DEFAULT_AMPLITUDE)
-                vibe.vibrate(effect)
-                viewModel.loadRandomCocktail()
-            }
-        }
-
         viewModel.openWifiDefinitions.observe(requireActivity()) {
             if (it) {
                 val dialog = MaterialDialog(requireContext())
@@ -107,9 +94,8 @@ class RandomCocktailFragment : BaseFragment(), SensorEventListener {
         mSensorManager.registerListener(this, mAccelerometer, SensorManager.SENSOR_DELAY_NORMAL)
     }
 
-    override fun onPause() {
-        super.onPause()
-        // Make sure it is not used once not on fragment.
+    override fun onDestroy() {
+        super.onDestroy()
         mSensorManager.unregisterListener(this)
     }
 
@@ -120,11 +106,18 @@ class RandomCocktailFragment : BaseFragment(), SensorEventListener {
         accelerationCurrentValue = sqrt((x * x + y * y + z * z))
         changeInAcceleration = abs(accelerationCurrentValue - accelerationPreviousValue)
         accelerationPreviousValue = accelerationCurrentValue
-        viewModel.updateMaxShake(changeInAcceleration)
+        if (changeInAcceleration >= 15) {
+            mSensorManager.unregisterListener(this)
+            val vibe: Vibrator = ContextCompat.getSystemService(requireContext(), Vibrator::class.java) as Vibrator
+            val effect: VibrationEffect = VibrationEffect.createOneShot(1000, VibrationEffect.DEFAULT_AMPLITUDE)
+            vibe.vibrate(effect)
+            viewModel.loadRandomCocktail()
+        }
+
     }
 
     override fun onAccuracyChanged(sensor: Sensor, i: Int) {
-        Timber.i("What is i? -> $i")
+        Timber.i("i -> The new accuracy of this sensor, one of SensorManager.SENSOR_STATUS_* : $i")
     }
 
 }

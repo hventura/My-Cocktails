@@ -8,25 +8,15 @@ import kotlinx.coroutines.launch
 import pt.hventura.mycoktails.base.BaseViewModel
 import pt.hventura.mycoktails.base.NavigationCommand
 import pt.hventura.mycoktails.data.CocktailsRepositoryImpl
-import pt.hventura.mycoktails.data.models.Result
 import pt.hventura.mycoktails.data.models.Result.Success
 import pt.hventura.mycoktails.data.models.toDetail
 import pt.hventura.mycoktails.utils.SingleLiveEvent
-import timber.log.Timber
 
-class RandomCocktailViewModel(private val app: Application, private val repository: CocktailsRepositoryImpl) : BaseViewModel(app) {
+class RandomCocktailViewModel(app: Application, private val repository: CocktailsRepositoryImpl) : BaseViewModel(app) {
 
-    private val _shakeMax = MutableLiveData<Int>(0)
-    val shakeMax: LiveData<Int> get() = _shakeMax
     val openWifiDefinitions = SingleLiveEvent<Boolean>()
 
-    fun updateMaxShake(shake: Float) {
-        _shakeMax.value = shake.toInt()
-    }
-
     fun loadRandomCocktail() = viewModelScope.launch {
-        _shakeMax.value = 0
-
         when (val cocktail = repository.getCocktailsListFromDB()) {
             is Success -> {
                 val random = cocktail.data[(1..cocktail.data.size).random() - 1]
