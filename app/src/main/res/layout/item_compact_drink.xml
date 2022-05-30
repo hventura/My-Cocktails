@@ -1,0 +1,88 @@
+<?xml version="1.0" encoding="utf-8"?>
+<layout xmlns:android="http://schemas.android.com/apk/res/android"
+    xmlns:app="http://schemas.android.com/apk/res-auto"
+    xmlns:tools="http://schemas.android.com/tools">
+
+    <data>
+
+        <variable
+            name="item"
+            type="pt.hventura.mycoktails.data.models.Drink" />
+
+    </data>
+
+    <androidx.cardview.widget.CardView
+        android:id="@+id/cocktailCardView"
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content"
+        android:layout_margin="@dimen/margin_small"
+        app:cardCornerRadius="10dp"
+        app:cardElevation="10dp">
+
+        <androidx.constraintlayout.widget.ConstraintLayout
+            android:layout_width="match_parent"
+            android:layout_height="match_parent"
+            android:padding="@dimen/padding_normal">
+
+            <de.hdodenhof.circleimageview.CircleImageView
+                android:id="@+id/compactDrinkThumb"
+                android:layout_width="75dp"
+                android:layout_height="75dp"
+                android:contentDescription="@string/preview_description"
+                android:urlImage="@{item.imgPreview}"
+                app:civ_border_color="@color/primary_dark_color"
+                app:civ_border_width="2dp"
+                app:layout_constraintBottom_toBottomOf="parent"
+                app:layout_constraintStart_toStartOf="parent"
+                app:layout_constraintTop_toTopOf="parent"
+                tools:src="@tools:sample/backgrounds/scenic" />
+
+            <TextView
+                android:id="@+id/title"
+                android:layout_width="0dp"
+                android:layout_height="match_parent"
+                android:layout_marginStart="@dimen/margin_normal"
+                android:gravity="start"
+                android:maxLines="2"
+                android:text="@{item.strDrink}"
+                android:textSize="@dimen/text_medium"
+                app:layout_constraintEnd_toEndOf="parent"
+                app:layout_constraintStart_toEndOf="@id/compactDrinkThumb"
+                app:layout_constraintTop_toTopOf="parent"
+                tools:text="57 Chevy with a White License Plate" />
+
+            <TextView
+                android:id="@+id/textItemInDb"
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                android:layout_marginStart="@dimen/margin_normal"
+                android:text="@string/item_in_database"
+                app:layout_constraintBottom_toBottomOf="parent"
+                app:layout_constraintStart_toEndOf="@id/compactDrinkThumb" />
+
+            <ImageView
+                android:layout_width="20dp"
+                android:layout_height="0dp"
+                android:layout_marginStart="@dimen/margin_small"
+                android:applyIcon="@{item.existsInDB}"
+                android:contentDescription="@string/database_description"
+                app:layout_constraintBottom_toBottomOf="@id/textItemInDb"
+                app:layout_constraintStart_toEndOf="@id/textItemInDb"
+                app:layout_constraintTop_toTopOf="@id/textItemInDb"
+                tools:src="@drawable/ic_ok" />
+
+            <ImageView
+                android:id="@+id/favourite"
+                android:layout_width="25dp"
+                android:layout_height="25dp"
+                android:layout_marginEnd="@dimen/margin_small"
+                android:background="@drawable/ic_no_favourite"
+                android:contentDescription="@string/favourite_description"
+                android:favourite="@{item.favourite}"
+                app:layout_constraintBottom_toBottomOf="parent"
+                app:layout_constraintEnd_toEndOf="parent" />
+
+        </androidx.constraintlayout.widget.ConstraintLayout>
+
+    </androidx.cardview.widget.CardView>
+</layout>

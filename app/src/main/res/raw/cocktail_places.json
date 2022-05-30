@@ -1,0 +1,187 @@
+{
+  "type": "FeatureCollection",
+  "features": [
+    {
+      "type": "Feature",
+      "properties": {
+        "name": "Galerias Bar"
+      },
+      "geometry": {
+        "type": "Point",
+        "coordinates": [
+          -8.433618843555449,
+          40.20166793332158
+        ]
+      }
+    },
+    {
+      "type": "Feature",
+      "properties": {
+        "name": "Tertúlia d'Eventos"
+      },
+      "geometry": {
+        "type": "Point",
+        "coordinates": [
+          -8.431344330310822,
+          40.20195678674363
+        ]
+      }
+    },
+    {
+      "type": "Feature",
+      "properties": {
+        "name": "Samambaia"
+      },
+      "geometry": {
+        "type": "Point",
+        "coordinates": [
+          -8.410995751619339,
+          40.199030808562135
+        ]
+      }
+    },
+    {
+      "type": "Feature",
+      "properties": {
+        "name": "Papa"
+      },
+      "geometry": {
+        "type": "Point",
+        "coordinates": [
+          -8.420113921165466,
+          40.20712725966235
+        ]
+      }
+    },
+    {
+      "type": "Feature",
+      "properties": {
+        "name": "Spaghetti Notte Ristorante Italiano"
+      },
+      "geometry": {
+        "type": "Point",
+        "coordinates": [
+          -8.393940925598145,
+          40.214128483809645
+        ]
+      }
+    },
+    {
+      "type": "Feature",
+      "properties": {
+        "name": "Welcome Bar"
+      },
+      "geometry": {
+        "type": "Point",
+        "coordinates": [
+          -8.39610144495964,
+          40.21405577147697
+        ]
+      }
+    },
+    {
+      "type": "Feature",
+      "properties": {
+        "name": "Docas Rio"
+      },
+      "geometry": {
+        "type": "Point",
+        "coordinates": [
+          -8.426380231976509,
+          40.202839728225854
+        ]
+      }
+    },
+    {
+      "type": "Feature",
+      "properties": {
+        "name": "Passaporte Bar"
+      },
+      "geometry": {
+        "type": "Point",
+        "coordinates": [
+          -8.428652733564377,
+          40.20697669877147
+        ]
+      }
+    },
+    {
+      "type": "Feature",
+      "properties": {
+        "name": "Café Tropical"
+      },
+      "geometry": {
+        "type": "Point",
+        "coordinates": [
+          -8.419649228453636,
+          40.209160823149055
+        ]
+      }
+    },
+    {
+      "type": "Feature",
+      "properties": {
+        "name": "What's up Doc Bar"
+      },
+      "geometry": {
+        "type": "Point",
+        "coordinates": [
+          -8.419716954231262,
+          40.209866487682056
+        ]
+      }
+    },
+    {
+      "type": "Feature",
+      "properties": {
+        "name": "Liquidâmbar"
+      },
+      "geometry": {
+        "type": "Point",
+        "coordinates": [
+          -8.41924823820591,
+          40.209829617148166
+        ]
+      }
+    },
+    {
+      "type": "Feature",
+      "properties": {
+        "name": "Café S. José"
+      },
+      "geometry": {
+        "type": "Point",
+        "coordinates": [
+          -8.404980897903442,
+          40.2033365057912
+        ]
+      }
+    },
+    {
+      "type": "Feature",
+      "properties": {
+        "name": "Café Santa Cruz"
+      },
+      "geometry": {
+        "type": "Point",
+        "coordinates": [
+          -8.428890109062193,
+          40.210779539088136
+        ]
+      }
+    },
+    {
+      "type": "Feature",
+      "properties": {
+        "name": "Dux Bistro"
+      },
+      "geometry": {
+        "type": "Point",
+        "coordinates": [
+          -8.405625969171524,
+          40.21106169662528
+        ]
+      }
+    }
+  ]
+}

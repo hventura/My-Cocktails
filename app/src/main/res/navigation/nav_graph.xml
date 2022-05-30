@@ -1,0 +1,55 @@
+<?xml version="1.0" encoding="utf-8"?>
+<navigation xmlns:android="http://schemas.android.com/apk/res/android"
+    xmlns:app="http://schemas.android.com/apk/res-auto"
+    xmlns:tools="http://schemas.android.com/tools"
+    android:id="@+id/nav_graph"
+    app:startDestination="@id/cocktailListFragment">
+
+    <fragment
+        android:id="@+id/cocktailListFragment"
+        android:name="pt.hventura.mycoktails.cocktails.listcocktails.CocktailListFragment"
+        android:label="CocktailListFragment"
+        tools:layout="@layout/fragment_cocktail_list" >
+        <action
+            android:id="@+id/action_cocktailListFragment_to_detailsCocktailFragment"
+            app:destination="@id/detailsCocktailFragment" />
+    </fragment>
+    <fragment
+        android:id="@+id/randomCocktailFragment"
+        android:name="pt.hventura.mycoktails.cocktails.randomcocktail.RandomCocktailFragment"
+        android:label="RandomCocktailFragment"
+        tools:layout="@layout/fragment_random_cocktail" >
+        <action
+            android:id="@+id/action_randomCocktailFragment_to_detailsCocktailFragment"
+            app:destination="@id/detailsCocktailFragment" />
+    </fragment>
+    <fragment
+        android:id="@+id/favouritesCocktailFragment"
+        android:name="pt.hventura.mycoktails.cocktails.favoritecocktails.FavouritesCocktailFragment"
+        android:label="FavouritesCocktailFragment" >
+        <action
+            android:id="@+id/action_favouritesCocktailFragment_to_detailsCocktailFragment"
+            app:destination="@id/detailsCocktailFragment" />
+    </fragment>
+    <fragment
+        android:id="@+id/detailsCocktailFragment"
+        android:name="pt.hventura.mycoktails.cocktails.detailscocktail.DetailsCocktailFragment"
+        android:label="DetailsCocktailFragment"
+        tools:layout="@layout/fragment_details_cocktail" >
+        <argument
+            android:name="drinkDetail"
+            app:argType="pt.hventura.mycoktails.data.models.DrinkForDetail"
+            app:nullable="true" />
+        <action
+            android:id="@+id/action_detailsCocktailFragment_to_cocktailListFragment"
+            app:destination="@id/cocktailListFragment" />
+        <action
+            android:id="@+id/action_detailsCocktailFragment_to_favouritesCocktailFragment"
+            app:destination="@id/favouritesCocktailFragment" />
+    </fragment>
+    <fragment
+        android:id="@+id/cocktailMapFragment"
+        android:name="pt.hventura.mycoktails.cocktails.coctailsMap.CocktailMapFragment"
+        android:label="fragment_cocktail_map"
+        tools:layout="@layout/fragment_cocktail_map" />
+</navigation>

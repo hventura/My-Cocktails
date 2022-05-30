@@ -1,0 +1,47 @@
+{
+  "project_info": {
+    "project_number": "727553530565",
+    "project_id": "mycocktails-2022",
+    "storage_bucket": "mycocktails-2022.appspot.com"
+  },
+  "client": [
+    {
+      "client_info": {
+        "mobilesdk_app_id": "1:727553530565:android:0248c9d258bf912307eeac",
+        "android_client_info": {
+          "package_name": "pt.hventura.mycoktails"
+        }
+      },
+      "oauth_client": [
+        {
+          "client_id": "727553530565-0gtbgf0nbv2h5e4lnc5nliv65gi8smgl.apps.googleusercontent.com",
+          "client_type": 1,
+          "android_info": {
+            "package_name": "pt.hventura.mycoktails",
+            "certificate_hash": "4c581be42609c63d8857d3c0f4d609cd6ce0e3c6"
+          }
+        },
+        {
+          "client_id": "727553530565-fngpvm3rvu0pqfcdd65corn1o9ij8ucb.apps.googleusercontent.com",
+          "client_type": 3
+        }
+      ],
+      "api_key": [
+        {
+          "current_key": "AIzaSyB2tyutDLJs7VIbueI9OZaHxoZaLcjiXW0"
+        }
+      ],
+      "services": {
+        "appinvite_service": {
+          "other_platform_oauth_client": [
+            {
+              "client_id": "727553530565-fngpvm3rvu0pqfcdd65corn1o9ij8ucb.apps.googleusercontent.com",
+              "client_type": 3
+            }
+          ]
+        }
+      }
+    }
+  ],
+  "configuration_version": "1"
+}
