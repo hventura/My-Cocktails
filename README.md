@@ -15,6 +15,8 @@ The app consists in the following screens:
 - List of cocktails from the API.
     - Here we can click on the star to make it our favourite and see if the cocktail is already on our database (this is helpful for offline mode because if it
       exists in database we can see it offline)
+- Screen for the details of the cocktail.
+    - On this screen we can scroll from the bottom of the image to the top and see all the instruction without need of scroll (*MotionLayout* here)
 - List of Favourite cocktails (this list is like the list of cocktails but only has the favourites ones)
 - Screen for a Random Cocktail
     - Just shake your device and it will show you a random cocktail
